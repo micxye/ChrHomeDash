@@ -1,0 +1,10 @@
+{
+    "name": "chromeNewTabDash",
+    "version": "1.0",
+    "description": "Dashboard when opening a new tab on Google Chrome",
+    "manifest_verison": 2,
+    "default_locale": "en",
+    "chrome_url_overrides": {
+        "newtab": "./client/dist/index.html"
+    }
+}
