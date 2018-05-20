@@ -21,11 +21,28 @@ const addToDo = (data, callback) => {
         thing: data.thing,
         complete: false
     }
-    ToDo.insert(toDo);
+    ToDo.insert(toDo, (err, suc) => {
+        if (err) {
+            console.log("error inserting to db", err);
+        } else {
+            console.log("added toDo");
+        }
+    });
+}
+
+const getToDos = (callback) => {
+    ToDo.find((err, toDos) => {
+        if (err) {
+            console.error(err);
+        } else {
+            callback(toDos);
+        }
+    })
 }
 
 module.exports = {
     db,
     ToDo,
-    addToDo
+    addToDo,
+    getToDos,
 }
