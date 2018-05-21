@@ -12,6 +12,12 @@ const port = 8888;
 
 app.use(express.static(path.join(__dirname, '/../client/dist')));
 
+var toDos = [];
+
+app.get('/toDoList', (req, res)=>{
+    res.send(toDos);
+})
+
 app.get('/todo', (req, res) => {
     db.getToDos((err, data) => {
         if (err) {
@@ -24,8 +30,12 @@ app.get('/todo', (req, res) => {
 })
 
 app.post('/todo', (req, res) => {
-    db.addToDo(req.body, () => {
-        
+    db.addToDo(req.body, (err, data) => {
+        if (err) {
+            res.send(error);
+        } else {
+            res.send(data);
+        }
     })
 })
 

@@ -9,15 +9,20 @@ db.once('open', () => {
 });
 
 const toDoSchema = new mongoose.Schema({
+    id: {
+        type: String,
+        index: true,
+        unique: true,
+    },
     thing: String,
     complete: Boolean,
-
 })
 
 const ToDo = mongoose.model('todo', toDoSchema);
 
 const addToDo = (data, callback) => {
     const toDo = {
+        id: data.id,
         thing: data.thing,
         complete: false
     }
