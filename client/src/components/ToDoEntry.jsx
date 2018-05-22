@@ -5,10 +5,9 @@ import ItemTypes from './ItemTypes.jsx'
 
 const style = {
     border: '1px dashed gray',
-    padding: '0.5rem 1rem',
+    padding: '0.5rem',
     marginBottom: '.5rem',
     backgroundColor: 'white',
-    cursor: 'move',
 }
 
 const toDoSource = {
@@ -45,7 +44,6 @@ const toDoTarget = {
     },
 }
 
-// @ ???
 @DropTarget(ItemTypes.TODO, toDoTarget, connect => ({
     connectDropTarget: connect.dropTarget(),
 }))
@@ -59,6 +57,7 @@ export default class ToDoEntry extends Component {
         connectDragSource: PropTypes.func.isRequired,
         connectDropTarget: PropTypes.func.isRequired,
         isDragging: PropTypes.bool.isRequired,
+        complete: PropTypes.bool.isRequired,
         id: PropTypes.any.isRequired,
         text: PropTypes.string.isRequired,
         moveToDo: PropTypes.func.isRequired,
@@ -67,15 +66,27 @@ export default class ToDoEntry extends Component {
 
     render() {
         const {
+            id,
             text,
             isDragging,
+            completeToDo,
+            removeToDo,
             connectDragSource,
             connectDropTarget,
         } = this.props
         const opacity = isDragging ? 0 : 1
 
         return connectDragSource(
-            connectDropTarget(<div style={{ ...style, opacity }}>{text}</div>),
+            connectDropTarget(
+                <div style={{ ...style, opacity }}>
+                    {(() => { return this.props.complete ? 
+                        <input checked type="checkbox" value="None" id="roundedTwo" name="check" onClick={() => { completeToDo(id) }}/>:
+                        <input type="checkbox" value="None" id="roundedTwo" name="check" onClick={() => { completeToDo(id) }}/>;
+                    })()}
+                    <button type="button" className="x" onClick={()=>{removeToDo(id)}}>✖</button>
+                    {text}
+                </div>
+            )
         )
     }
 }

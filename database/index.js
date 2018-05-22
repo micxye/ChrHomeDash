@@ -14,7 +14,7 @@ const toDoSchema = new mongoose.Schema({
         index: true,
         unique: true,
     },
-    thing: String,
+    text: String,
     complete: Boolean,
 })
 
@@ -23,7 +23,7 @@ const ToDo = mongoose.model('todo', toDoSchema);
 const addToDo = (data, callback) => {
     const toDo = {
         id: data.id,
-        thing: data.thing,
+        text: data.text,
         complete: false
     }
     ToDo.insert(toDo, (err, suc) => {
