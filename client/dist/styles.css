@@ -1,4 +1,26 @@
 /* Close Button */
 .x {
   float: right;
-  border: 1px solid transparent; }
+  border: 1px solid transparent;
+  font-size: 22; }
+
+#todolistcontainer {
+  width: 35%;
+  float: left; }
+
+#mi {
+  display: none; }
+
+#datetime {
+  margin: 0;
+  display: inline; }
+
+#datetimecontainer {
+  display: inline; }
+
+#calendar {
+  float: right; }
+
+#appcontainer {
+  width: 100%;
+  height: 100%; }
