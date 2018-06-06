@@ -28,25 +28,4 @@ app.post('/todolist', (req, res) => {
     console.log(toDoList)
 })
 
-// app.get('/todo', (req, res) => {
-//     db.getToDos((err, data) => {
-//         if (err) {
-//             res.sendStatus(404);
-//             res.send(error);
-//         } else {
-//             res.send(data);
-//         }
-//     })
-// })
-
-// app.post('/todo', (req, res) => {
-//     db.addToDo(req.body, (err, data) => {
-//         if (err) {
-//             res.send(error);
-//         } else {
-//             res.send(data);
-//         }
-//     })
-// })
-
 app.listen(port, () => console.log(`Server is listening to port ${port}`))
