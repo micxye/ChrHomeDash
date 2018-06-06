@@ -1,11 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types'
-import update from 'immutability-helper'
-import { DropTarget, DragDropContext } from 'react-dnd'
-import HTML5Backend from 'react-dnd-html5-backend'
-import ToDoEntry from './ToDoEntry.jsx'
-import ToDoInput from './ToDoInput.jsx'
-import ItemTypes from './ItemTypes.jsx'
+import PropTypes from 'prop-types';
+import update from 'immutability-helper';
+import { DropTarget, DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
+import ToDoEntry from './ToDoEntry.jsx';
+import ToDoInput from './ToDoInput.jsx';
+import ItemTypes from './ItemTypes.jsx';
+import axios from 'axios';
 
 const style = {
     width: 400,
@@ -24,49 +25,44 @@ export default class ToDoList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            toDos: [
-                {
-                    id: 1,
-                    text: 'make a cool to do list',
-                    complete: true
-                },
-                {
-                    id: 2,
-                    text: 'give it drag and drop functionality',
-                    complete: true
-                },
-                {
-                    id: 3,
-                    text: 'be able to create new todos',
-                    complete: true
-                },
-                {
-                    id: 4,
-                    text: 'make a checkbox',
-                    complete: true
-                },
-                {
-                    id: 5,
-                    text: 'be able to delete todos',
-                    complete: false
-                },
-                {
-                    id: 6,
-                    text: '???',
-                    complete: false
-                },
-                {
-                    id: 7,
-                    text: 'PROFIT',
-                    complete: false
-                }
-            ]
+            toDos: []
         }
         this.moveToDo = this.moveToDo.bind(this)
         this.findToDo = this.findToDo.bind(this)
         this.completeToDo = this.completeToDo.bind(this)
         this.removeToDo = this.removeToDo.bind(this)
         this.addToDo = this.addToDo.bind(this)
+    }
+
+    componentDidMount() {
+        this.getToDoList()
+    }
+
+    getToDoList() {
+        axios.get('http://localhost:8888/todolist')
+            .then((response) => {
+                console.log(response)
+                this.setState({
+                    toDos: response.data
+                })
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+
+    persistToDoList() {
+        axios.post('http://localhost:8888/todolist', this.state.toDos)
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    saveToDoList() {
+        const save = setTimeout(()=>{this.persistToDoList()}, 300);
     }
 
     addToDo(text) {
@@ -83,6 +79,7 @@ export default class ToDoList extends React.Component {
         this.setState({
             toDos: toDoList
         })
+        this.saveToDoList();
     }
 
     removeToDo(id) {
@@ -92,16 +89,17 @@ export default class ToDoList extends React.Component {
         this.setState({
             toDos: toDoList
         })
+        this.saveToDoList();
     }
 
     completeToDo(id) {
         const targetIndex = this.findToDo(id).index;
         const toDoList = this.state.toDos.slice();
-        let isToDoComplete = toDoList[targetIndex].complete
-        isToDoComplete ? isToDoComplete = false : isToDoComplete = true; 
+        toDoList[targetIndex].complete ? toDoList[targetIndex].complete = false : toDoList[targetIndex].complete = true; 
         this.setState({
             toDos: toDoList
         })
+        this.saveToDoList();
     }
 
     moveToDo(id, atIndex) {
@@ -113,6 +111,7 @@ export default class ToDoList extends React.Component {
                 },
             }),
         )
+        this.saveToDoList();
         console.log(this.state.toDos)
     }
 
