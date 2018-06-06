@@ -1,10 +1,12 @@
 @import 'ToDoInput';
 @import 'ToDoList';
-@import 'TimeDate';
+@import 'DateTime';
 @import 'ToDoEntry';
+@import 'Dashboard';
 
-#calendar {
-    float:right;
+html, body, #app {
+    margin: 0;
+    height: 100%;
 }
 
 #appcontainer {

@@ -1,6 +1,6 @@
 import React from 'react';
 import ToDoList from './ToDoList.jsx';
-import DateTime from './DateTime.jsx';
+import Dashboard from './Dashboard.jsx';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -16,9 +16,7 @@ export default class App extends React.Component {
                 <div id="todolistcontainer">
                     <ToDoList />
                 </div>
-                <div id="datetimecontainer">
-                    <DateTime />
-                </div>
+                <Dashboard />
             </div>
         )
     }
