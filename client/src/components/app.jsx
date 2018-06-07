@@ -13,9 +13,7 @@ export default class App extends React.Component {
     render() {
         return (
             <div id="appcontainer">
-                <div id="todolistcontainer">
-                    <ToDoList />
-                </div>
+                <ToDoList />
                 <Dashboard />
             </div>
         )

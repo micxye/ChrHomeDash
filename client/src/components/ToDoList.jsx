@@ -8,10 +8,6 @@ import ToDoInput from './ToDoInput.jsx';
 import ItemTypes from './ItemTypes.jsx';
 import axios from 'axios';
 
-const style = {
-    width: 400,
-}
-
 const toDoTarget = {
     drop() { },
 }
@@ -130,7 +126,7 @@ export default class ToDoList extends React.Component {
         const { toDos } = this.state
 
         return connectDropTarget(
-            <div style={style}>
+            <div id="todolistcontainer">
                 <ToDoInput addToDo={this.addToDo} />
                 {toDos.map(toDo => (
                     <ToDoEntry

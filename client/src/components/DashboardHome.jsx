@@ -12,9 +12,7 @@ export default class DashboardHome extends React.Component {
     render() {
         return (
             <div id="dashboardhome">
-                <div id="datetimecontainer">
-                    <DateTime />
-                </div>
+                <DateTime />
             </div>
         )
     }

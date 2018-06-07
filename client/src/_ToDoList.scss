@@ -2,4 +2,16 @@
     width: 400;
     height: 100%;
     float: left;
+    order: 1;
+    margin: 10px;
+}
+
+#addtodobar {
+    padding-bottom: 10px;
+}
+/* Close Button */
+.x {
+  float: right;
+  border: 1px solid transparent;
+  font-size: 22
 }

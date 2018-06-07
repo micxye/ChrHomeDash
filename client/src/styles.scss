@@ -1,7 +1,5 @@
-@import 'ToDoInput';
 @import 'ToDoList';
 @import 'DateTime';
-@import 'ToDoEntry';
 @import 'Dashboard';
 
 html, body, #app {
@@ -12,4 +10,5 @@ html, body, #app {
 #appcontainer {
     width: 100%;
     height: 100%;
+    display: flex;
 }

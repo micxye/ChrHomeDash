@@ -2,31 +2,35 @@
   display: none
 }
 
-#datetime {
-    margin: 0;
-    display: inline;
-    float: right;
+#datetimecontainer {
+    width: 400px;
+    height: 150px;
+    display: flex;
+    margin: 10px
 }
 
-#datetimecontainer {
-    width: 100px;
-    height: 30px;
+#datetime {
+    float: right;
+    width: 250px;
+    height: 150px;
 }
 
 #clockcontainer {
-    width: 35%;
-    height: 35%;
+    width: 150px;
+    height: 150px;
     float: left;
+    position: relative;
+    margin: 0;
+    font-size: 10px;
+    display:flex;
 }
 
 .clock {
-    width: 30rem;
-    height: 30rem;
-    border:20px solid white;
+    width: 100px;
+    height: 100px;
+    border:7px solid white;
     border-radius:50%;
-    margin:50px auto;
     position: relative;
-    padding:2rem;
     box-shadow:
     0 0 0 4px rgba(0,0,0,0.1),
     inset 0 0 0 3px #EFEFEF,
@@ -36,14 +40,14 @@
 
 .clock-face {
     position: relative;
-    width: 100%;
-    height: 100%;
+    width: 100px;
+    height: 100px;
     transform: translateY(-3px); /* account for the height of the clock hands */
 }
 
 .hand {
-    width:50%;
-    height:6px;
+    width: 50%;
+    height:4px;
     background:black;
     position: absolute;
     top:50%;
@@ -51,4 +55,16 @@
     transform: rotate(90deg);
     transition: all 0.05s;
     transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+}
+
+.second-hand {
+    background: red
+}
+
+.min-hand {
+    background: black;
+}
+
+.hour-hand {
+    background: gray;
 }

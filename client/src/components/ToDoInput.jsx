@@ -18,8 +18,8 @@ export default class ToDoInput extends Component {
 
     render() {
         return (
-            <form>
-                TO DO: <input id="todoinput" style={style} type="text" placeholder="New ToDo"/>
+            <form id="addtodobar">
+                TO DO: <input id="todoinput" style={style} type="text" placeholder="New To Do"/>
                 <input type="submit" value="add" onClick={(e) => { this.addNewToDo(e)}}/>
             </form>
         )

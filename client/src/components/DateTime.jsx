@@ -23,25 +23,26 @@ export default class DateTime extends React.Component {
             const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
             const tags = ["mon", "d", "y", "h", "m", "s", "mi"],
                 corr = [months[mo], dy, yr, hou.pad(2), min.pad(2), sec.pad(2), milli];
+            
+            // Digital clock
             for (var i = 0; i < tags.length; i++) {
                 document.getElementById(tags[i]).firstChild.nodeValue = corr[i];
             }
 
-            // CSS clock
+            // CSS traditional clock
             const secondHand = document.querySelector('.second-hand');
             const minsHand = document.querySelector('.min-hand');
             const hourHand = document.querySelector('.hour-hand');
 
-            const seconds = now.getSeconds();
-            const secondsDegrees = ((seconds / 60) * 360) + 90;
+            const secondsDegrees = ((sec / 60) * 360) + 90;
+            sec === 0 ? secondHand.style.transition = '0s' : secondHand.style.transition = 'all 0.05s';
             secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
 
-            const mins = now.getMinutes();
-            const minsDegrees = ((mins / 60) * 360) + ((seconds / 60) * 6) + 90;
+            const minsDegrees = ((min / 60) * 360) + ((sec / 60) * 6) + 90;
+            min === 0 ? minsHand.style.transition = '0s' : minsHand.style.transition = 'all 0.05s';
             minsHand.style.transform = `rotate(${minsDegrees}deg)`;
 
-            const hour = now.getHours();
-            const hourDegrees = ((hour / 12) * 360) + ((mins / 60) * 30) + 90;
+            const hourDegrees = ((hou / 12) * 360) + ((min / 60) * 30) + 90;
             hourHand.style.transform = `rotate(${hourDegrees}deg)`;  
         }
         updateClock();
@@ -65,8 +66,8 @@ export default class DateTime extends React.Component {
                     </div>
                 </div>
                 <div id="datetime">
-                    <a id="mon">January</a>
-                    <a id="d">1</a>,
+                    <a id="mon">January</a>&nbsp;
+                    <a id="d">1</a>,&nbsp;
                     <a id="y">0</a><br />
                     <a id="h">12</a>:
                     <a id="m">00</a>:
