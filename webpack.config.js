@@ -19,7 +19,6 @@ module.exports = {
                     presets: ['env', 'react', 'stage-2'],
                     plugins: ['transform-decorators-legacy']
                 },
-                
             },
         ],
     },
