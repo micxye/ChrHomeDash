@@ -15,7 +15,8 @@
   font-size: 22; }
 
 .todocomplete {
-  text-decoration: line-through; }
+  text-decoration: line-through;
+  color: gray; }
 
 #mi {
   display: none; }

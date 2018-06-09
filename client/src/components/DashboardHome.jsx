@@ -1,5 +1,6 @@
 import React from 'react';
-import DateTime from './DateTime.jsx'
+import DateTime from './DateTime.jsx';
+import WeatherWidget from './WeatherWidget.jsx';
 
 export default class DashboardHome extends React.Component {
     constructor(props) {
@@ -13,6 +14,7 @@ export default class DashboardHome extends React.Component {
         return (
             <div id="dashboardhome">
                 <DateTime />
+                <WeatherWidget />
             </div>
         )
     }
