@@ -1,9 +1,10 @@
 #todolistcontainer {
-    width: 400;
+    width: 30%;
     height: 100%;
     float: left;
     order: 1;
     margin: 10px;
+    display: table;
 }
 
 #addtodobar {
