@@ -15,7 +15,7 @@ const port = 8888;
 
 app.use(express.static(path.join(__dirname, '/../client/dist')));
 
-var toDoList = [{
+let toDoList = [{
     id: 1,
     text: 'server has been reset!',
     complete: false
@@ -33,10 +33,11 @@ app.post('/todolist', (req, res) => {
 
 app.post('/localweather', (req, res) => {
     const clientIp = req.body.ip;
+    // get lat/long from client IP
     axios.get(`http://api.ipstack.com/${clientIp}?access_key=${process.env.IPSTACK_API}`)
         .then(function (response) {
             const { latitude, longitude, city } = response.data;
-            // send lat/long to server for weather 
+            // send lat/long to darksky API, to retrieve local weather data
             axios.get(`https://api.darksky.net/forecast/${process.env.DARKSKY_API}/${latitude},${longitude}`)
                 .then(function (response) {
                     res.send(Object.assign(response.data, {city}));
@@ -49,8 +50,6 @@ app.post('/localweather', (req, res) => {
         .catch(function (error) {
             console.log(error);
         });
-
-    
 })
 
 app.listen(port, () => console.log(`Server is listening to port ${port}`))
