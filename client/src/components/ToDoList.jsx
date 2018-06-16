@@ -37,7 +37,6 @@ export default class ToDoList extends React.Component {
     getToDoList() {
         axios.get('http://localhost:8888/todolist')
             .then((response) => {
-                console.log(response)
                 this.setState({
                     toDos: response.data
                 })

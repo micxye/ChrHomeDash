@@ -9,6 +9,12 @@
 #addtodobar {
   padding-bottom: 10px; }
 
+#todoinput {
+  width: 313px; }
+
+#addtodobutton {
+  display: none; }
+
 /* Close Button */
 .x {
   float: right;
