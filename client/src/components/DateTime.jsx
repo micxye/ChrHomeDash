@@ -19,10 +19,12 @@ export default class DateTime extends React.Component {
                 hou = now.getHours(),
                 mo = now.getMonth(),
                 dy = now.getDate(),
-                yr = now.getFullYear();
+                yr = now.getFullYear(),
+                weekDay = now.getDay()
+            const weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
             const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-            const tags = ["mon", "d", "y", "h", "m", "s", "mi"],
-                corr = [months[mo], dy, yr, hou.pad(2), min.pad(2), sec.pad(2), milli];
+            const tags = ["mon", "d", "y", "h", "m", "s", "mi", "weekday"],
+                corr = [months[mo], dy, yr, hou.pad(2), min.pad(2), sec.pad(2), milli, weekDays[weekDay]];
             
             // Digital clock
             for (var i = 0; i < tags.length; i++) {
@@ -66,6 +68,7 @@ export default class DateTime extends React.Component {
                     </div>
                 </div>
                 <div id="datetime">
+                    <a id="weekday">Weekday</a><br />
                     <a id="mon">January</a>&nbsp;
                     <a id="d">1</a>,&nbsp;
                     <a id="y">0</a><br />
