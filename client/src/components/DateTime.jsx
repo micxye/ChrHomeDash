@@ -21,7 +21,7 @@ export default class DateTime extends React.Component {
                 dy = now.getDate(),
                 yr = now.getFullYear(),
                 weekDay = now.getDay()
-            const weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+            const weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
             const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
             const tags = ["mon", "d", "y", "h", "m", "s", "mi", "weekday"],
                 corr = [months[mo], dy, yr, hou.pad(2), min.pad(2), sec.pad(2), milli, weekDays[weekDay]];

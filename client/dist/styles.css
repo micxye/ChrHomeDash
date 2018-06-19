@@ -15,13 +15,19 @@
 #addtodobutton {
   display: none; }
 
+.todoentry {
+  border: 1px dashed gray;
+  padding: 0.5rem;
+  margin-bottom: .5rem;
+  background-color: white; }
+
 /* Close Button */
 .x {
   float: right;
   border: 1px solid transparent;
   font-size: 22; }
 
-.todocomplete {
+.complete {
   text-decoration: line-through;
   color: gray; }
 

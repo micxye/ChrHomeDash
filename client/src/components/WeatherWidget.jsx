@@ -7,7 +7,7 @@ export default class WeatherWidget extends React.Component {
         super(props);
         this.state = {
             ip: "136.25.147.85", //ip.address(),
-            city: ''
+            weather: ""
         }
     }
 
@@ -21,6 +21,9 @@ export default class WeatherWidget extends React.Component {
         axios.post(`http://localhost:8888/localweather`, { ip: this.state.ip })
             .then(function (response) {
                 console.table(response.data);
+                context.setState({
+                    weather: response.data
+                })
             })
             .catch(function (error) {
                 console.log(error);
@@ -30,8 +33,7 @@ export default class WeatherWidget extends React.Component {
     render() {
         return (
             <div id="weatherwidget">
-                {this.state.ip}
-                {this.state.city}
+                {this.state.weather.city}
             </div>
         )
     }

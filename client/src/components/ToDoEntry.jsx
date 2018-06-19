@@ -3,13 +3,6 @@ import PropTypes from 'prop-types'
 import { DragSource, DropTarget } from 'react-dnd'
 import ItemTypes from './ItemTypes.jsx'
 
-const style = {
-    border: '1px dashed gray',
-    padding: '0.5rem',
-    marginBottom: '.5rem',
-    backgroundColor: 'white',
-}
-
 const toDoSource = {
     beginDrag(props) {
         return {
@@ -78,7 +71,7 @@ export default class ToDoEntry extends Component {
 
         return connectDragSource(
             connectDropTarget(
-                <div style={{ ...style, opacity }} className={(()=>this.props.complete ? "todocomplete":"todoentry")()}>
+                <div className={(()=>this.props.complete ? "todoentry complete":"todoentry")()}>
                     {(() => this.props.complete ? 
                         <input checked type="checkbox" value="None" id="todoentrycheckbox" name="check" onClick={() => { completeToDo(id) }}/>:
                         <input type="checkbox" value="None" id="todoentrycheckbox" name="check" onClick={() => { completeToDo(id) }}/>
