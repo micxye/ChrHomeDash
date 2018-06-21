@@ -2,8 +2,9 @@ import React from 'react';
 import ip from 'ip';
 import axios from 'axios';
 import WeatherCurrent from './WeatherCurrent.jsx';
-import WeatherHourly from './WeatherHourly.jsx';
-import WeatherDaily from './WeatherDaily.jsx';
+import WeatherHourlyList from './WeatherHourlyList.jsx';
+import WeatherDailyList from './WeatherDailyList.jsx';
+import WeatherLoading from './WeatherLoading.jsx';
 
 export default class WeatherWidget extends React.Component {
     constructor(props) {
@@ -34,11 +35,12 @@ export default class WeatherWidget extends React.Component {
     }
 
     render() {
-        return (
+        return this.state.weather === "" ? <WeatherLoading /> :
+        (
             <div id="weatherwidget">
-                <WeatherCurrent />
-                <WeatherHourly />
-                <WeatherDaily />
+                <WeatherCurrent weather={this.state.weather}/>
+                <WeatherHourlyList weatherHourly={this.state.weather.hourly}/>
+                <WeatherDailyList weatherDaily={this.state.weather.daily}/>
             </div>
         )
     }

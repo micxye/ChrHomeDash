@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class WeatherHourly extends React.Component {
+export default class WeatherHourlyList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -10,7 +10,7 @@ export default class WeatherHourly extends React.Component {
 
     render() {
         return (
-            <div id="weatherhourlybox">
+            <div id="weatherhourlylist">
                 HOURLY WEATHER
             </div>
         )

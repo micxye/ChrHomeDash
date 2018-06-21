@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class WeatherDaily extends React.Component {
+export default class WeatherDailyList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
