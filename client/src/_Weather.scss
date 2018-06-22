@@ -1,0 +1,22 @@
+#weatherwidget {
+    margin: 10px;
+}
+
+#weathercurrentbox {
+    width: 100%;
+    display: flex;
+}
+
+#currentweathericon {
+    width: 70px;
+    height: 70px;
+}
+
+#currentcity {
+    font-size: 40px;
+}
+
+#currenttempsummary {
+    font-size: 25px;
+    margin-top: 15px;
+}
