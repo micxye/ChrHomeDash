@@ -8,15 +8,21 @@
 }
 
 #currentweathericon {
-    width: 70px;
-    height: 70px;
+    width: 90px;
+    height: 90px;
+    padding-right: 10px;
+    padding-top: 10px;
 }
 
-#currentcity {
+
+#currenttempsummary {
     font-size: 40px;
 }
 
-#currenttempsummary {
-    font-size: 25px;
-    margin-top: 15px;
+#currenthighlow {
+    font-size: 18px;
+}
+
+#currentcity {
+    font-size: 20px;
 }

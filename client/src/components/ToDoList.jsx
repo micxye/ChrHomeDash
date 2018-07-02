@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import update from 'immutability-helper';
 import { DropTarget, DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
@@ -90,7 +89,7 @@ export default class ToDoList extends React.Component {
     completeToDo(id) {
         const targetIndex = this.findToDo(id).index;
         const toDoList = this.state.toDos.slice();
-        toDoList[targetIndex].complete ? toDoList[targetIndex].complete = false : toDoList[targetIndex].complete = true; 
+        toDoList[targetIndex].complete = !toDoList[targetIndex].complete;
         this.setState({
             toDos: toDoList
         })
@@ -126,20 +125,22 @@ export default class ToDoList extends React.Component {
 
         return connectDropTarget(
             <div id="todolistcontainer">
-                <ToDoInput addToDo={this.addToDo} />
-                {toDos.map(toDo => (
-                    <ToDoEntry
-                        key={toDo.id}
-                        id={toDo.id}
-                        text={toDo.text}
-                        complete={toDo.complete}
-                        moveToDo={this.moveToDo}
-                        findToDo={this.findToDo}
-                        removeToDo={this.removeToDo}
-                        completeToDo={this.completeToDo}
-                    />
-                ))}
-            </div>,
+                <ToDoInput addToDo={this.addToDo} count={this.state.toDos.length}/>
+                <section>
+                    {toDos.map(toDo => (
+                        <ToDoEntry
+                            key={toDo.id}
+                            id={toDo.id}
+                            text={toDo.text}
+                            complete={toDo.complete}
+                            moveToDo={this.moveToDo}
+                            findToDo={this.findToDo}
+                            removeToDo={this.removeToDo}
+                            completeToDo={this.completeToDo}
+                        />
+                    ))}
+                </section>
+            </div>
         )
     }
 }

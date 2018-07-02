@@ -36,13 +36,10 @@ export default class WeatherWidget extends React.Component {
 
     render() {
         return this.state.weather === "" ? <WeatherLoading /> :
-        (
             <div id="weatherwidget">
-                <div id="currentcity">{this.state.weather.city}</div>
                 <WeatherCurrent weather={this.state.weather}/>
                 <WeatherHourlyList weatherHourly={this.state.weather.hourly}/>
                 <WeatherDailyList weatherDaily={this.state.weather.daily}/>
             </div>
-        )
     }
 }

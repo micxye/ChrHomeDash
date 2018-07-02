@@ -6,7 +6,7 @@ export default class WeatherCurrent extends React.Component {
     }
 
     componentDidMount() {
-        const skycons = new Skycons({ "color": "black" });
+        const skycons = new Skycons({ "color": "white" });
         skycons.play();
         skycons.add("currentweathericon", this.props.weather.currently.icon);
     }
@@ -14,15 +14,18 @@ export default class WeatherCurrent extends React.Component {
     render() {
         return (
             <div id="weathercurrentbox">
-                <canvas id="currentweathericon" width="70" height="70"></canvas>
+                <canvas id="currentweathericon" width="90" height="90"></canvas>
                 <div id="temperaturecurrentbox">
                     <div id="currenttempsummary">
                         {Math.round(this.props.weather.currently.temperature)}˚ {this.props.weather.currently.summary}  
                     </div>
                     <div id="currenthighlow">
-                        High:&nbsp;{Math.round(this.props.weather.daily.data[0].temperatureHigh)}˚&nbsp;&nbsp;&nbsp;&nbsp;Low:&nbsp;{Math.round(this.props.weather.daily.data[0].temperatureLow)}˚
+                        High:&nbsp;{Math.round(this.props.weather.daily.data[0].temperatureHigh)}˚&nbsp;&nbsp;&nbsp;&nbsp;
+                        Low:&nbsp;{Math.round(this.props.weather.daily.data[0].temperatureLow)}˚
                     </div>
+                    <div id="currentcity">{this.props.weather.city}</div>
                 </div>
+                <div></div>
             </div>
         )
     }

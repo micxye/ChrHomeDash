@@ -4,7 +4,7 @@ export default class WeatherHourlyList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            
         }
     }
 

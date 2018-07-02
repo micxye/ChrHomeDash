@@ -15,7 +15,7 @@ export default class ToDoInput extends Component {
     render() {
         return (
             <form id="addtodobar">
-                TO DO: <input id="todoinput" type="text" placeholder="New To Do"/>
+                <span id="addtodotext">&nbsp;{this.props.count} TO DO </span><input id="todoinput" type="text" placeholder="New To Do" maxLength="60"/>
                 <input id="addtodobutton" type="submit" value="+" onClick={(e) => { this.addNewToDo(e)}}/>
             </form>
         )

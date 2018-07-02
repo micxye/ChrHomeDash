@@ -14,7 +14,7 @@ export default class WeatherLoading extends React.Component {
     render() {
         return (
             <div id="weatherloading">
-                <canvas id="loadingicon" width="150" height="150"></canvas>
+                <canvas id="loadingicon" width="350" height="350"></canvas>
             </div>
         )
     }

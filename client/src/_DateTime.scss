@@ -6,19 +6,19 @@
     width: 400px;
     height: 150px;
     display: flex;
-    margin: 10px;
+    margin-top: 10px;
 }
 
 #datetime {
     float: right;
-    width: 250px;
+    width: 300px;
     height: 150px;
-    font-size: 40px;
+    font-size: 33px;
 }
 
 #clockcontainer {
-    width: 130px;
-    height: 130px;
+    width: 100px;
+    height: 100px;
     float: left;
     position: relative;
     margin: 10px;
@@ -63,9 +63,9 @@
 }
 
 .min-hand {
-    background: black;
+    background: white;
 }
 
 .hour-hand {
-    background: gray;
+    background: rgb(150, 146, 146);
 }

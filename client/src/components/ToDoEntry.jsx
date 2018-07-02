@@ -66,18 +66,24 @@ export default class ToDoEntry extends Component {
             removeToDo,
             connectDragSource,
             connectDropTarget,
-        } = this.props
-        const opacity = isDragging ? 0 : 1
+        } = this.props;
+        const opacity = isDragging ? 0 : 1;
 
         return connectDragSource(
             connectDropTarget(
-                <div style={{opacity }} className={(()=>this.props.complete ? "todoentry complete":"todoentry")()}>
-                    {(() => this.props.complete ? 
-                        <input checked type="checkbox" value="None" id="todoentrycheckbox" name="check" onClick={() => { completeToDo(id) }}/>:
-                        <input type="checkbox" value="None" id="todoentrycheckbox" name="check" onClick={() => { completeToDo(id) }}/>
-                    )()}
-                    <button type="button" className="x" onClick={()=>{removeToDo(id)}}>✖</button>
-                    {text}
+                <div style={{opacity }} className="todoentry">
+                    <div className="checkboxtodotext">
+                        {(() => this.props.complete ?
+                            <input checked type="checkbox" value="None" id={this.props.id} name="check" onClick={() => { completeToDo(id) }} /> :
+                            <input type="checkbox" value="None" id={this.props.id} name="check" onClick={() => { completeToDo(id) }} />
+                        )()}
+                        <label for={this.props.id} className={(() => this.props.complete ? "complete" : "incomplete")()}>
+                            <span></span>
+                            {text}
+                            <ins><i>{text}</i></ins>
+                        </label>
+                    </div>
+                    <button type="button" className="x" onClick={() => { removeToDo(id) }}>✖</button>
                 </div>
             )
         )
