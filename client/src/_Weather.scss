@@ -1,5 +1,7 @@
+$background-color: #212121;
+
 #weatherwidget {
-    margin: 10px;
+    margin-top: 10px;
 }
 
 #weathercurrentbox {
@@ -14,7 +16,6 @@
     padding-top: 10px;
 }
 
-
 #currenttempsummary {
     font-size: 40px;
 }
@@ -24,5 +25,44 @@
 }
 
 #currentcity {
-    font-size: 20px;
+    font-size: 22px;
+}
+
+#weatherhourlycontainer {
+    padding-top: 5px;
+}
+
+#weatherhourlysummary {
+    font-size: 14px;
+}
+
+#weatherhourlyscrollbox {
+    overflow: auto;
+    white-space: nowrap;
+    width: 440px;
+}
+
+.weatherhourlyentry {
+    display: inline-block;
+    text-align: center;
+}
+
+/* width */
+::-webkit-scrollbar {
+    height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: $background-color; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(88, 88, 88); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(68, 68, 68); 
 }

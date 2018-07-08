@@ -7,7 +7,7 @@
     "start": "node ./server/index.js",
     "server-dev": "nodemon ./server/index.js",
     "css": "node-sass client/src/styles.scss -o client/dist",
-    "css:watch": "npm run css && node-sass client/src/styles.scss -wo client/dist",
+    "css-dev": "npm run css && node-sass client/src/styles.scss -wo client/dist",
     "react-dev": "webpack -d --watch",
     "react-prod": "webpack -p"
   },

@@ -1,4 +1,4 @@
-$todoentry-color: rgb(88, 88, 88);
+$background-color: #212121;
 
 #todolistcontainer {
     width: 420px;
@@ -31,7 +31,7 @@ $todoentry-color: rgb(88, 88, 88);
 .todoentry {
     padding: 0.3rem;
     margin-bottom: .5rem;
-    background-color: $todoentry-color;
+    background-color: $background-color;
     cursor: pointer;
     font-size: 14px;
     display: flex;
@@ -50,9 +50,9 @@ $todoentry-color: rgb(88, 88, 88);
 .x {
   float: right;
   font-size: 22;
-  color: black;
-  background-color: $todoentry-color;
-  border-color: $todoentry-color;
+  color: rgb(88, 88, 88);
+  background-color: $background-color;
+  border-color: $background-color;
 }
 
 // GODLY CHECKBOXES

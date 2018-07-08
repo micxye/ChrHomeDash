@@ -23,7 +23,7 @@
 .todoentry {
   padding: 0.3rem;
   margin-bottom: .5rem;
-  background-color: #585858;
+  background-color: #212121;
   cursor: pointer;
   font-size: 14px;
   display: flex; }
@@ -39,9 +39,9 @@
 .x {
   float: right;
   font-size: 22;
-  color: black;
-  background-color: #585858;
-  border-color: #585858; }
+  color: #585858;
+  background-color: #212121;
+  border-color: #212121; }
 
 section {
   display: flex;
@@ -219,7 +219,7 @@ input[type='checkbox']:checked + label > span:before {
   display: flex; }
 
 #weatherwidget {
-  margin: 10px; }
+  margin-top: 10px; }
 
 #weathercurrentbox {
   width: 100%;
@@ -238,7 +238,38 @@ input[type='checkbox']:checked + label > span:before {
   font-size: 18px; }
 
 #currentcity {
-  font-size: 20px; }
+  font-size: 22px; }
+
+#weatherhourlycontainer {
+  padding-top: 5px; }
+
+#weatherhourlysummary {
+  font-size: 14px; }
+
+#weatherhourlyscrollbox {
+  overflow: auto;
+  white-space: nowrap;
+  width: 440px; }
+
+.weatherhourlyentry {
+  display: inline-block;
+  text-align: center; }
+
+/* width */
+::-webkit-scrollbar {
+  height: 8px; }
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #212121; }
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #585858; }
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #444444; }
 
 html, body, #app {
   margin: 0;

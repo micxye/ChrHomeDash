@@ -11,7 +11,7 @@ export default class WeatherHourlyEntry extends React.Component {
     render() {
         return (
             <div className="weatherhourlyentry">
-                daily entry
+                {this.props.time}
             </div>
         )
     }

@@ -3,6 +3,8 @@
 @import 'Dashboard';
 @import 'Weather';
 
+$background-color: #212121;
+
 html, body, #app {
     margin: 0;
     height: 99%;
@@ -18,7 +20,7 @@ html, body, #app {
 
 *{ box-sizing: border-box; user-select: none; }
 body{
-  background: #212121;
+  background: $background-color;
   justify-content: center;
   align-items: center;
   font: 24px/1.4 "RobotoDraft", sans-serif;

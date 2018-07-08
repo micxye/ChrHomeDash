@@ -25,7 +25,6 @@ export default class WeatherCurrent extends React.Component {
                     </div>
                     <div id="currentcity">{this.props.weather.city}</div>
                 </div>
-                <div></div>
             </div>
         )
     }
