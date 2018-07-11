@@ -244,7 +244,7 @@ input[type='checkbox']:checked + label > span:before {
   padding-top: 5px; }
 
 #weatherhourlysummary {
-  font-size: 14px; }
+  font-size: 15px; }
 
 #weatherhourlyscrollbox {
   overflow: auto;
@@ -253,7 +253,16 @@ input[type='checkbox']:checked + label > span:before {
 
 .weatherhourlyentry {
   display: inline-block;
-  text-align: center; }
+  text-align: center;
+  padding-top: 5px;
+  padding-right: 10px; }
+
+.weatherhourlytime {
+  font-size: 12px; }
+
+.weatherhourlytemp {
+  font-size: 16px;
+  padding-bottom: 5px; }
 
 /* width */
 ::-webkit-scrollbar {

@@ -5,8 +5,15 @@ export default class WeatherHourlyList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-        
+            currentHour: null
         }
+    }
+
+    componentDidMount() {
+        const now = new Date();
+        this.setState({
+            currentHour: now.getHours()
+        })
     }
 
     render() {
@@ -16,7 +23,7 @@ export default class WeatherHourlyList extends React.Component {
                 <div id="weatherhourlyscrollbox">
                     {this.props.weatherHourly.data.map((hour, i) => {
                         if (i % 2 === 0) {
-                            return <WeatherHourlyEntry time={i}/>
+                            return <WeatherHourlyEntry key={i} id={i} weather={hour} time={(this.state.currentHour + i) % 24}/>
                         }
                     })}
                 </div>

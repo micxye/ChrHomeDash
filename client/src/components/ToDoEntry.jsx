@@ -77,7 +77,7 @@ export default class ToDoEntry extends Component {
                             <input checked type="checkbox" value="None" id={this.props.id} name="check" onClick={() => { completeToDo(id) }} /> :
                             <input type="checkbox" value="None" id={this.props.id} name="check" onClick={() => { completeToDo(id) }} />
                         )()}
-                        <label for={this.props.id} className={(() => this.props.complete ? "complete" : "incomplete")()}>
+                        <label htmlFor={this.props.id} className={(() => this.props.complete ? "complete" : "incomplete")()}>
                             <span></span>
                             {text}
                             <ins><i>{text}</i></ins>
