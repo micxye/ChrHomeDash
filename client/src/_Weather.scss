@@ -2,6 +2,59 @@ $background-color: #212121;
 
 #weatherwidget {
     margin-top: 10px;
+    font-size: 15px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.forecast > li {
+    position: relative;
+    margin: 5px;
+}
+
+.forecast > li:hover {
+    background-color: #292929;
+    cursor: pointer;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    opacity: 0;
+    transition: all 0.5s;
+    will-change: opacity;
+}
+
+.trigger-enter .dropdown {
+    display: block;
+    opacity: 1;
+}
+
+.trigger-enter-active .dropdown {
+    opacity: 1;
+}
+
+.dropdownbackground {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    background: #292929;
+    border-radius: 4px;
+    transition:all 0.3s, opacity 0.1s, transform 0.2s;
+    transform-origin: 50% 0;
+    display: flex;
+    justify-content: center;
+    opacity:0;
+}
+
+.dropdownbackground.open {
+    opacity: 1;
 }
 
 #weathercurrentbox {
@@ -13,7 +66,7 @@ $background-color: #212121;
     width: 90px;
     height: 90px;
     padding-right: 10px;
-    padding-top: 10px;
+    padding-top: 15px;
 }
 
 #currenttempsummary {
@@ -29,24 +82,25 @@ $background-color: #212121;
 }
 
 #weatherhourlycontainer {
-    padding-top: 5px;
+    padding: 10px;
 }
 
 #weatherhourlysummary {
     font-size: 15px;
+    padding-bottom: 5px;
 }
 
 #weatherhourlyscrollbox {
     overflow: auto;
     white-space: nowrap;
-    width: 440px;
+    width: 500px;
 }
 
 .weatherhourlyentry {
     display: inline-block;
     text-align: center;
     padding-top: 5px;
-    padding-right: 10px;
+    padding-right: 20px;
 }
 
 .weatherhourlytime {
@@ -58,22 +112,15 @@ $background-color: #212121;
     padding-bottom: 5px;
 }
 
-/* width */
-::-webkit-scrollbar {
-    height: 8px;
+#weatherdailycontainer {
+    width: 360px;
+    padding: 10px;
 }
 
-/* Track */
-::-webkit-scrollbar-track {
-    background: $background-color; 
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: rgb(88, 88, 88); 
+#weatherdailysummary {
+    font-size: 15px;
 }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: rgb(68, 68, 68); 
+.weatherdailylow {
+    color: gray;
 }

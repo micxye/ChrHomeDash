@@ -124,8 +124,8 @@ export default class ToDoList extends React.Component {
         const { toDos } = this.state
 
         return connectDropTarget(
-            <div id="todolistcontainer">
-                <ToDoInput addToDo={this.addToDo} count={this.state.toDos.length}/>
+            <div className="w3-animate-opacity" id="todolistcontainer">
+                <ToDoInput addToDo={this.addToDo} count={this.state.toDos.filter(toDo => !toDo.complete).length}/>
                 <section>
                     {toDos.map(toDo => (
                         <ToDoEntry

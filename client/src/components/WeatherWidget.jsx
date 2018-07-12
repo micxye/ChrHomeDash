@@ -17,6 +17,7 @@ export default class WeatherWidget extends React.Component {
 
     componentDidMount() {
         this.getLocalWeather();
+        console.log(ip.address())
     }
 
     getLocalWeather() {
@@ -25,21 +26,66 @@ export default class WeatherWidget extends React.Component {
         axios.post(`http://localhost:8888/localweather`, { ip: this.state.ip })
             .then(function (response) {
                 console.table(response.data);
-                context.setState({
-                    weather: response.data
-                })
+                context.setState({ weather: response.data })
+                context.initializeForecastDropdowns();
             })
             .catch(function (error) {
                 console.log(error);
             });
     }
 
+    initializeForecastDropdowns() {
+        const triggers = document.querySelectorAll('.forecast > li');
+        const background = document.querySelector('.dropdownbackground');
+        const nav = document.querySelector('#forecastnav');
+
+        function handleEnter() {
+            this.classList.add('trigger-enter');
+            setTimeout(() => this.classList.add('trigger-enter-active'), 150);
+            background.classList.add('open');
+            
+            const dropdown = this.querySelector('.dropdown');
+            const dropdownCoords = dropdown.getBoundingClientRect();
+            const navCoords = nav.getBoundingClientRect();
+
+            const coords = {
+                height: dropdownCoords.height,
+                width: dropdownCoords.width,
+                top: dropdownCoords.top - navCoords.top,
+                left: dropdownCoords.left - navCoords.left,
+            }
+
+            background.style.setProperty('width', `${coords.width}px`);
+            background.style.setProperty('height', `${coords.height}px`);
+            background.style.setProperty('transform', `translate(${coords.left}px, ${coords.top}px)`);
+        }
+
+        function handleLeave() {
+            this.classList.remove('trigger-enter', 'trigger-enter-active');
+            background.classList.remove('open');
+        }
+
+        triggers.forEach(trigger => trigger.addEventListener('mouseenter', handleEnter));
+        triggers.forEach(trigger => trigger.addEventListener('mouseleave', handleLeave));
+    }
+
     render() {
         return this.state.weather === "" ? <WeatherLoading /> :
-            <div id="weatherwidget">
+            <div className="w3-animate-opacity" id="weatherwidget">
                 <WeatherCurrent weather={this.state.weather}/>
-                <WeatherHourlyList weatherHourly={this.state.weather.hourly}/>
-                <WeatherDailyList weatherDaily={this.state.weather.daily}/>
+                <nav id="forecastnav">
+                    <div className="dropdownbackground"></div>
+                    <ul className="forecast">
+                        <li>
+                            <span id="48hourforecast">&nbsp;&nbsp;48 Hour Forecast&nbsp;&nbsp;</span>
+                            <WeatherHourlyList weatherHourly={this.state.weather.hourly} />
+                        </li>
+                        <li>
+                            <span id="7dayforecast">&nbsp;&nbsp;7 Day Forecast&nbsp;&nbsp;</span>
+                            <WeatherDailyList weatherDaily={this.state.weather.daily} />
+                        </li>
+                    </ul>
+                </nav>
             </div>
     }
 }

@@ -16,8 +16,6 @@ html, body, #app {
     display: flex;
 }
 
-
-
 *{ box-sizing: border-box; user-select: none; }
 body{
   background: $background-color;
@@ -25,4 +23,25 @@ body{
   align-items: center;
   font: 24px/1.4 "RobotoDraft", sans-serif;
   color: #fff;
+}
+
+// SCROLL BARS
+/* width */
+::-webkit-scrollbar {
+    height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: $background-color; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(88, 88, 88); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(68, 68, 68); 
 }

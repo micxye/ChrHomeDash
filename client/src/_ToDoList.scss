@@ -20,20 +20,25 @@ $background-color: #212121;
 
 #todoinput {
     width: 330px;
-    float: right;
+    float: left;
 }
 
 #addtodobutton {
     display: none;
 }
 
+#addtodotext {
+  display: inline;
+  font-size: 18px;
+  text-align: center;
+}
 
 .todoentry {
     padding: 0.3rem;
     margin-bottom: .5rem;
     background-color: $background-color;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 16px;
     display: flex;
 }
 
@@ -49,24 +54,22 @@ $background-color: #212121;
 /* Close Button */
 .x {
   float: right;
-  font-size: 22;
+  font-size: 16px;
   color: rgb(88, 88, 88);
   background-color: $background-color;
   border-color: $background-color;
 }
 
-// GODLY CHECKBOXES
+.x:hover {
+  color: rgb(195, 0, 255);
+  transition: 250ms;
+}
+
+// ANIMATED CHECKBOXES
 
 section{
   display: flex;
   flex-direction: column;
-}
-
-h1{
-  font-weight: 400;
-  font-size: 2em;
-  cursor: default;
-  margin: 0 0 .5em 0;
 }
 
 input[type='checkbox']{ height: 0; width: 0; display: none;}
@@ -84,7 +87,7 @@ input[type='checkbox'] + label > ins{
   bottom: 0;
   left: 2em;
   height: 0;
-  width: 100%;
+  width: 90%;
   overflow: hidden;
   text-decoration: none;
   transition: height 300ms cubic-bezier(.4,.0,.23,1);

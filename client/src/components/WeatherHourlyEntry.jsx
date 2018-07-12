@@ -18,9 +18,9 @@ export default class WeatherHourlyEntry extends React.Component {
         return (
             <div className="weatherhourlyentry">
                 <div className="weatherhourlytime">{(() => {
-                    if (this.props.time === 24) {
-                        return "12 AM"
-                    } else if (this.props.time >= 12) {
+                    if (this.props.time % 12 === 0) {
+                        return this.props.time === 24 ? "12 AM" : "12 PM";
+                    } else if (this.props.time > 12) {
                         return (this.props.time % 12).toString() + " PM";
                     } else {
                         return this.props.time.toString() + " AM";

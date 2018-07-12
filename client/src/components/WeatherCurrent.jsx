@@ -16,6 +16,7 @@ export default class WeatherCurrent extends React.Component {
             <div id="weathercurrentbox">
                 <canvas id="currentweathericon" width="90" height="90"></canvas>
                 <div id="temperaturecurrentbox">
+                    <div id="currentcity">{this.props.weather.city}</div>
                     <div id="currenttempsummary">
                         {Math.round(this.props.weather.currently.temperature)}˚ {this.props.weather.currently.summary}  
                     </div>
@@ -23,7 +24,6 @@ export default class WeatherCurrent extends React.Component {
                         High:&nbsp;{Math.round(this.props.weather.daily.data[0].temperatureHigh)}˚&nbsp;&nbsp;&nbsp;&nbsp;
                         Low:&nbsp;{Math.round(this.props.weather.daily.data[0].temperatureLow)}˚
                     </div>
-                    <div id="currentcity">{this.props.weather.city}</div>
                 </div>
             </div>
         )

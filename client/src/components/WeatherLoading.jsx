@@ -5,16 +5,9 @@ export default class WeatherLoading extends React.Component {
         super(props);
     }
 
-    componentDidMount() {
-        const skycons = new Skycons({ "color": "black" });
-        skycons.play();
-        skycons.add("loadingicon", Skycons.WIND);
-    }
-
     render() {
         return (
-            <div id="weatherloading">
-                <canvas id="loadingicon" width="350" height="350"></canvas>
+            <div className="w3-animate-opacity" id="weatherloading">
             </div>
         )
     }

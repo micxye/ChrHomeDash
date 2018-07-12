@@ -15,17 +15,22 @@
 
 #todoinput {
   width: 330px;
-  float: right; }
+  float: left; }
 
 #addtodobutton {
   display: none; }
+
+#addtodotext {
+  display: inline;
+  font-size: 18px;
+  text-align: center; }
 
 .todoentry {
   padding: 0.3rem;
   margin-bottom: .5rem;
   background-color: #212121;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 16px;
   display: flex; }
 
 .checkboxtodotext {
@@ -38,20 +43,18 @@
 /* Close Button */
 .x {
   float: right;
-  font-size: 22;
+  font-size: 16px;
   color: #585858;
   background-color: #212121;
   border-color: #212121; }
 
+.x:hover {
+  color: #c300ff;
+  transition: 250ms; }
+
 section {
   display: flex;
   flex-direction: column; }
-
-h1 {
-  font-weight: 400;
-  font-size: 2em;
-  cursor: default;
-  margin: 0 0 .5em 0; }
 
 input[type='checkbox'] {
   height: 0;
@@ -71,7 +74,7 @@ input[type='checkbox'] + label > ins {
   bottom: 0;
   left: 2em;
   height: 0;
-  width: 100%;
+  width: 90%;
   overflow: hidden;
   text-decoration: none;
   transition: height 300ms cubic-bezier(0.4, 0, 0.23, 1); }
@@ -147,14 +150,13 @@ input[type='checkbox']:checked + label > span:before {
   display: none; }
 
 #datetimecontainer {
-  width: 400px;
+  width: 420px;
   height: 150px;
-  display: flex;
-  margin-top: 10px; }
+  display: flex; }
 
 #datetime {
   float: right;
-  width: 300px;
+  width: 320px;
   height: 150px;
   font-size: 33px; }
 
@@ -173,18 +175,18 @@ input[type='checkbox']:checked + label > span:before {
   border: 3px solid white;
   border-radius: 50%;
   position: relative;
-  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1), inset 0 0 0 3px #EFEFEF, inset 0 0 10px black, 0 0 10px rgba(0, 0, 0, 0.2); }
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1), inset 0 0 0 3px #333333, inset 0 0 10px black, 0 0 10px rgba(0, 0, 0, 0.2); }
 
 .clock-face {
   position: relative;
   width: 100px;
   height: 100px;
-  transform: translateY(-3px);
+  transform: translateY(-3px) translateX(-3px);
   /* account for the height of the clock hands */ }
 
 .hand {
   width: 50%;
-  height: 4px;
+  height: 3px;
   background: black;
   position: absolute;
   top: 50%;
@@ -219,7 +221,52 @@ input[type='checkbox']:checked + label > span:before {
   display: flex; }
 
 #weatherwidget {
-  margin-top: 10px; }
+  margin-top: 10px;
+  font-size: 15px; }
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center; }
+
+.forecast > li {
+  position: relative;
+  margin: 5px; }
+
+.forecast > li:hover {
+  background-color: #292929;
+  cursor: pointer; }
+
+.dropdown {
+  display: none;
+  position: absolute;
+  opacity: 0;
+  transition: all 0.5s;
+  will-change: opacity; }
+
+.trigger-enter .dropdown {
+  display: block;
+  opacity: 1; }
+
+.trigger-enter-active .dropdown {
+  opacity: 1; }
+
+.dropdownbackground {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  background: #292929;
+  border-radius: 4px;
+  transition: all 0.3s, opacity 0.1s, transform 0.2s;
+  transform-origin: 50% 0;
+  display: flex;
+  justify-content: center;
+  opacity: 0; }
+
+.dropdownbackground.open {
+  opacity: 1; }
 
 #weathercurrentbox {
   width: 100%;
@@ -229,7 +276,7 @@ input[type='checkbox']:checked + label > span:before {
   width: 90px;
   height: 90px;
   padding-right: 10px;
-  padding-top: 10px; }
+  padding-top: 15px; }
 
 #currenttempsummary {
   font-size: 40px; }
@@ -241,21 +288,22 @@ input[type='checkbox']:checked + label > span:before {
   font-size: 22px; }
 
 #weatherhourlycontainer {
-  padding-top: 5px; }
+  padding: 10px; }
 
 #weatherhourlysummary {
-  font-size: 15px; }
+  font-size: 15px;
+  padding-bottom: 5px; }
 
 #weatherhourlyscrollbox {
   overflow: auto;
   white-space: nowrap;
-  width: 440px; }
+  width: 500px; }
 
 .weatherhourlyentry {
   display: inline-block;
   text-align: center;
   padding-top: 5px;
-  padding-right: 10px; }
+  padding-right: 20px; }
 
 .weatherhourlytime {
   font-size: 12px; }
@@ -264,21 +312,15 @@ input[type='checkbox']:checked + label > span:before {
   font-size: 16px;
   padding-bottom: 5px; }
 
-/* width */
-::-webkit-scrollbar {
-  height: 8px; }
+#weatherdailycontainer {
+  width: 360px;
+  padding: 10px; }
 
-/* Track */
-::-webkit-scrollbar-track {
-  background: #212121; }
+#weatherdailysummary {
+  font-size: 15px; }
 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #585858; }
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #444444; }
+.weatherdailylow {
+  color: gray; }
 
 html, body, #app {
   margin: 0;
@@ -299,3 +341,19 @@ body {
   align-items: center;
   font: 24px/1.4 "RobotoDraft", sans-serif;
   color: #fff; }
+
+/* width */
+::-webkit-scrollbar {
+  height: 8px; }
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #212121; }
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #585858; }
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #444444; }

@@ -3,15 +3,14 @@
 }
 
 #datetimecontainer {
-    width: 400px;
+    width: 420px;
     height: 150px;
     display: flex;
-    margin-top: 10px;
 }
 
 #datetime {
     float: right;
-    width: 300px;
+    width: 320px;
     height: 150px;
     font-size: 33px;
 }
@@ -34,7 +33,7 @@
     position: relative;
     box-shadow:
     0 0 0 4px rgba(0,0,0,0.1),
-    inset 0 0 0 3px #EFEFEF,
+    inset 0 0 0 3px #333333,
     inset 0 0 10px black,
     0 0 10px rgba(0,0,0,0.2);
 }
@@ -43,12 +42,12 @@
     position: relative;
     width: 100px;
     height: 100px;
-    transform: translateY(-3px); /* account for the height of the clock hands */
+    transform: translateY(-3px) translateX(-3px); /* account for the height of the clock hands */
 }
 
 .hand {
     width: 50%;
-    height:4px;
+    height:3px;
     background:black;
     position: absolute;
     top:50%;
