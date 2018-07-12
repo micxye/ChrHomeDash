@@ -18,7 +18,7 @@ export default class WeatherHourlyList extends React.Component {
 
     render() {
         return (
-            <div className="dropdown w3-animate-opacity" id="weatherhourlycontainer">
+            <div className="dropdown" id="weatherhourlycontainer">
                 <div id="weatherhourlysummary">{this.props.weatherHourly.summary}</div>
                 <div id="weatherhourlyscrollbox">
                     {this.props.weatherHourly.data.map((hour, i) => {

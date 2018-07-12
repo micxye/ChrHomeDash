@@ -3,6 +3,8 @@ $background-color: #212121;
 #weatherwidget {
     margin-top: 10px;
     font-size: 15px;
+    animation: fadein 1200ms;
+    -webkit-animation: fadein 1200ms; /* Safari and Chrome */
 }
 
 nav ul {
@@ -10,7 +12,6 @@ nav ul {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
 }
 
 .forecast > li {
@@ -93,7 +94,7 @@ nav ul {
 #weatherhourlyscrollbox {
     overflow: auto;
     white-space: nowrap;
-    width: 500px;
+    width: 450px;
 }
 
 .weatherhourlyentry {
@@ -113,7 +114,7 @@ nav ul {
 }
 
 #weatherdailycontainer {
-    width: 360px;
+    width: 350px;
     padding: 10px;
 }
 

@@ -17,7 +17,7 @@ export default class WeatherDailyList extends React.Component {
 
     render() {
         return (
-            <div className="dropdown w3-animate-opacity" id="weatherdailycontainer">
+            <div className="dropdown" id="weatherdailycontainer">
                 <div id="weatherdailysummary">{this.props.weatherDaily.summary}</div>
                 {this.props.weatherDaily.data.map((weather, i) => {
                     if (i > 0) return <WeatherDailyEntry key={i} id={i} weather={weather} day={(this.state.currentDay + i) % 7}/>

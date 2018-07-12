@@ -7,7 +7,7 @@ export default class WeatherLoading extends React.Component {
 
     render() {
         return (
-            <div className="w3-animate-opacity" id="weatherloading">
+            <div id="weatherloading">
             </div>
         )
     }

@@ -35,34 +35,22 @@ export default class ToDoList extends React.Component {
 
     getToDoList() {
         axios.get('http://localhost:8888/todolist')
-            .then((response) => {
-                this.setState({
-                    toDos: response.data
-                })
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+            .then(response => this.setState({ toDos: response.data }))
+            .catch(error => console.log(error));
     }
 
     persistToDoList() {
         axios.post('http://localhost:8888/todolist', this.state.toDos)
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+            .then(response => console.log(response))
+            .catch(error => console.log(error));
     }
 
     saveToDoList() {
-        const save = setTimeout(()=>{this.persistToDoList()}, 300);
+        const save = setTimeout(() => this.persistToDoList(), 300);
     }
 
     addToDo(text) {
-        const ID = function () { // create ID function
-            return '_' + Math.random().toString(36).substr(2, 9);
-        };
+        const ID = () => '_' + Math.random().toString(36).substr(2, 9);
         const toDo = {
             id: ID(),
             text: text,
@@ -70,9 +58,7 @@ export default class ToDoList extends React.Component {
         };
         const toDoList = this.state.toDos.slice();
         toDoList.unshift(toDo);
-        this.setState({
-            toDos: toDoList
-        })
+        this.setState({ toDos: toDoList })
         this.saveToDoList();
     }
 
@@ -80,9 +66,7 @@ export default class ToDoList extends React.Component {
         const targetIndex = this.findToDo(id).index;
         const toDoList = this.state.toDos.slice();
         toDoList.splice(targetIndex, 1);
-        this.setState({
-            toDos: toDoList
-        })
+        this.setState({ toDos: toDoList })
         this.saveToDoList();
     }
 
@@ -90,9 +74,7 @@ export default class ToDoList extends React.Component {
         const targetIndex = this.findToDo(id).index;
         const toDoList = this.state.toDos.slice();
         toDoList[targetIndex].complete = !toDoList[targetIndex].complete;
-        this.setState({
-            toDos: toDoList
-        })
+        this.setState({ toDos: toDoList })
         this.saveToDoList();
     }
 
@@ -112,7 +94,6 @@ export default class ToDoList extends React.Component {
     findToDo(id) {
         const { toDos } = this.state
         const toDo = toDos.filter(c => c.id === id)[0]
-
         return {
             toDo,
             index: toDos.indexOf(toDo),
@@ -124,7 +105,7 @@ export default class ToDoList extends React.Component {
         const { toDos } = this.state
 
         return connectDropTarget(
-            <div className="w3-animate-opacity" id="todolistcontainer">
+            <div id="todolistcontainer">
                 <ToDoInput addToDo={this.addToDo} count={this.state.toDos.filter(toDo => !toDo.complete).length}/>
                 <section>
                     {toDos.map(toDo => (

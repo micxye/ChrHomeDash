@@ -10,6 +10,10 @@ html, body, #app {
     height: 99%;
 }
 
+#app {
+    display: none;
+}
+
 #appcontainer {
     width: 100%;
     height: 100%;
@@ -23,6 +27,24 @@ body{
   align-items: center;
   font: 24px/1.4 "RobotoDraft", sans-serif;
   color: #fff;
+}
+
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
 }
 
 // SCROLL BARS

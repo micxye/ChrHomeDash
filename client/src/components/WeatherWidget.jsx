@@ -1,5 +1,6 @@
 import React from 'react';
 import ip from 'ip';
+import $ from 'jquery';
 import axios from 'axios';
 import WeatherCurrent from './WeatherCurrent.jsx';
 import WeatherHourlyList from './WeatherHourlyList.jsx';
@@ -17,21 +18,18 @@ export default class WeatherWidget extends React.Component {
 
     componentDidMount() {
         this.getLocalWeather();
-        console.log(ip.address())
     }
 
     getLocalWeather() {
-        const context = this;
         // get latitude, longitude, city from IPSTACK with client IP
         axios.post(`http://localhost:8888/localweather`, { ip: this.state.ip })
-            .then(function (response) {
+            .then((response) => {
                 console.table(response.data);
-                context.setState({ weather: response.data })
-                context.initializeForecastDropdowns();
+                this.setState({ weather: response.data })
+                this.initializeForecastDropdowns();
+                $(document).ready(() => $('#app').fadeIn()); // fade page in once weather ready
             })
-            .catch(function (error) {
-                console.log(error);
-            });
+            .catch(error => console.log(error));
     }
 
     initializeForecastDropdowns() {
@@ -71,7 +69,7 @@ export default class WeatherWidget extends React.Component {
 
     render() {
         return this.state.weather === "" ? <WeatherLoading /> :
-            <div className="w3-animate-opacity" id="weatherwidget">
+            <div id="weatherwidget">
                 <WeatherCurrent weather={this.state.weather}/>
                 <nav id="forecastnav">
                     <div className="dropdownbackground"></div>
