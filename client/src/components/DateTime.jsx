@@ -57,7 +57,7 @@ export default class DateTime extends React.Component {
     
     render() {
         return (
-            <div className="w3-animate-opacity" id="datetimecontainer">
+            <div id="datetimecontainer">
                 <div id="clockcontainer">
                     <div className="clock">
                         <div className="clock-face">

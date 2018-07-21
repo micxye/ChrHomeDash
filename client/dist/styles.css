@@ -4,18 +4,18 @@
   height: 100%;
   order: 1;
   margin-top: 15px;
-  margin-left: 10px;
+  margin-left: 20px;
   display: inline-block; }
 
 #addtodobar {
-  padding-bottom: 10px;
+  padding-bottom: 3px;
   width: 420px;
   max-width: 450px;
   font-size: 16px; }
 
 #todoinput {
   width: 330px;
-  float: left; }
+  float: right; }
 
 #addtodobutton {
   display: none; }
@@ -25,9 +25,14 @@
   font-size: 15px;
   text-align: center; }
 
+#todolistboard {
+  list-style-type: none;
+  padding: 0;
+  margin: 0; }
+
 .todoentry {
   padding: 0.3rem;
-  margin-bottom: .5rem;
+  margin-bottom: .2rem;
   background-color: #212121;
   cursor: pointer;
   font-size: 16px;
@@ -223,9 +228,8 @@ input[type='checkbox']:checked + label > span:before {
 #weatherwidget {
   margin-top: 10px;
   font-size: 15px;
-  animation: fadein 1200ms;
-  -webkit-animation: fadein 1200ms;
-  /* Safari and Chrome */ }
+  display: block;
+  height: auto; }
 
 nav ul {
   list-style: none;
@@ -290,7 +294,10 @@ nav ul {
   font-size: 22px; }
 
 #weatherhourlycontainer {
-  padding: 10px; }
+  padding: 10px;
+  animation: fadein 800ms;
+  -webkit-animation: fadein 800ms;
+  /* Safari and Chrome */ }
 
 #weatherhourlysummary {
   font-size: 15px;
@@ -316,7 +323,10 @@ nav ul {
 
 #weatherdailycontainer {
   width: 350px;
-  padding: 10px; }
+  padding: 10px;
+  animation: fadein 800ms;
+  -webkit-animation: fadein 800ms;
+  /* Safari and Chrome */ }
 
 #weatherdailysummary {
   font-size: 15px; }
@@ -338,7 +348,7 @@ html, body, #app {
 
 * {
   box-sizing: border-box;
-  user-select: none; }
+  /* user-select: none; */ }
 
 body {
   background: #212121;

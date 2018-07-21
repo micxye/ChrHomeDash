@@ -1,30 +1,29 @@
 $background-color: #212121;
 
 #todolistcontainer {
-    width: 420px;
-    max-width: 420px;
-    height: 100%;
-    order: 1;
-    margin-top: 15px;
-    margin-left: 10px;
-    display: inline-block;
+  width: 420px;
+  max-width: 420px;
+  height: 100%;
+  order: 1;
+  margin-top: 15px;
+  margin-left: 20px;
+  display: inline-block;
 }
 
 #addtodobar {
-    padding-bottom: 10px;
-    width: 420px;
-    max-width: 450px;
-    font-size: 16px;
+  padding-bottom: 3px;
+  width: 420px;
+  max-width: 450px;
+  font-size: 16px;
 }
 
-
 #todoinput {
-    width: 330px;
-    float: left;
+  width: 330px;
+  float: right;
 }
 
 #addtodobutton {
-    display: none;
+  display: none;
 }
 
 #addtodotext {
@@ -33,13 +32,19 @@ $background-color: #212121;
   text-align: center;
 }
 
+#todolistboard {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
 .todoentry {
-    padding: 0.3rem;
-    margin-bottom: .5rem;
-    background-color: $background-color;
-    cursor: pointer;
-    font-size: 16px;
-    display: flex;
+  padding: 0.3rem;
+  margin-bottom: .2rem;
+  background-color: $background-color;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
 }
 
 .checkboxtodotext {

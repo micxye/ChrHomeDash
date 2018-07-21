@@ -23,11 +23,11 @@ export default class WeatherWidget extends React.Component {
     getLocalWeather() {
         // get latitude, longitude, city from IPSTACK with client IP
         axios.post(`http://localhost:8888/localweather`, { ip: this.state.ip })
-            .then((response) => {
+            .then(response => {
                 console.table(response.data);
                 this.setState({ weather: response.data })
                 this.initializeForecastDropdowns();
-                $(document).ready(() => $('#app').fadeIn()); // fade page in once weather ready
+                $(document).ready(() => $('#app').fadeIn());
             })
             .catch(error => console.log(error));
     }

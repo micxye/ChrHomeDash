@@ -6,6 +6,9 @@ import ToDoEntry from './ToDoEntry.jsx';
 import ToDoInput from './ToDoInput.jsx';
 import ItemTypes from './ItemTypes.jsx';
 import axios from 'axios';
+import TransitionGroup from 'react-transition-group/TransitionGroup';
+import FadeAndSlideTransition from './FadeAndSlideTransition.jsx';
+import ToDoListBoard from './ToDoListBoard.jsx';
 
 const toDoTarget = {
     drop() { },
@@ -57,7 +60,7 @@ export default class ToDoList extends React.Component {
             complete: false,
         };
         const toDoList = this.state.toDos.slice();
-        toDoList.unshift(toDo);
+        toDoList.push(toDo);
         this.setState({ toDos: toDoList })
         this.saveToDoList();
     }
@@ -107,20 +110,24 @@ export default class ToDoList extends React.Component {
         return connectDropTarget(
             <div id="todolistcontainer">
                 <ToDoInput addToDo={this.addToDo} count={this.state.toDos.filter(toDo => !toDo.complete).length}/>
-                <section>
-                    {toDos.map(toDo => (
-                        <ToDoEntry
-                            key={toDo.id}
-                            id={toDo.id}
-                            text={toDo.text}
-                            complete={toDo.complete}
-                            moveToDo={this.moveToDo}
-                            findToDo={this.findToDo}
-                            removeToDo={this.removeToDo}
-                            completeToDo={this.completeToDo}
-                        />
-                    ))}
-                </section>
+                <TransitionGroup component={ToDoListBoard}> 
+                        {toDos.map(toDo => (
+                            <FadeAndSlideTransition duration={300} key={toDo.id}>
+                                <li>
+                                    <ToDoEntry
+                                        key={toDo.id}
+                                        id={toDo.id}
+                                        text={toDo.text}
+                                        complete={toDo.complete}
+                                        moveToDo={this.moveToDo}
+                                        findToDo={this.findToDo}
+                                        removeToDo={this.removeToDo}
+                                        completeToDo={this.completeToDo}
+                                    />
+                                </li>
+                            </FadeAndSlideTransition>
+                        ))}
+                </TransitionGroup>
             </div>
         )
     }

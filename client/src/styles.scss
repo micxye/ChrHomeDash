@@ -20,7 +20,7 @@ html, body, #app {
     display: flex;
 }
 
-*{ box-sizing: border-box; user-select: none; }
+*{ box-sizing: border-box; /* user-select: none; */}
 body{
   background: $background-color;
   justify-content: center;

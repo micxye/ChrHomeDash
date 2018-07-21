@@ -71,7 +71,7 @@ export default class ToDoEntry extends Component {
 
         return connectDragSource(
             connectDropTarget(
-                <div style={{opacity }} className="todoentry">
+                <div style={{ opacity }} className="todoentry">
                     <div className="checkboxtodotext">
                         {(() => this.props.complete ?
                             <input checked type="checkbox" value="None" id={this.props.id} name="check" onClick={() => { completeToDo(id) }} /> :

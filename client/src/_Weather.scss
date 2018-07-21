@@ -3,8 +3,8 @@ $background-color: #212121;
 #weatherwidget {
     margin-top: 10px;
     font-size: 15px;
-    animation: fadein 1200ms;
-    -webkit-animation: fadein 1200ms; /* Safari and Chrome */
+    display: block;
+    height: auto;
 }
 
 nav ul {
@@ -84,6 +84,8 @@ nav ul {
 
 #weatherhourlycontainer {
     padding: 10px;
+    animation: fadein 800ms;
+    -webkit-animation: fadein 800ms; /* Safari and Chrome */
 }
 
 #weatherhourlysummary {
@@ -116,6 +118,8 @@ nav ul {
 #weatherdailycontainer {
     width: 350px;
     padding: 10px;
+    animation: fadein 800ms;
+    -webkit-animation: fadein 800ms; /* Safari and Chrome */
 }
 
 #weatherdailysummary {
