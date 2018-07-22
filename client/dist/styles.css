@@ -306,7 +306,11 @@ nav ul {
 #weatherhourlyscrollbox {
   overflow: auto;
   white-space: nowrap;
-  width: 450px; }
+  width: 440px; }
+
+.grabscrollactive {
+  cursor: grabbing;
+  cursor: -webkit-grabbing; }
 
 .weatherhourlyentry {
   display: inline-block;
@@ -315,10 +319,10 @@ nav ul {
   padding-right: 20px; }
 
 .weatherhourlytime {
-  font-size: 12px; }
+  font-size: 13px; }
 
 .weatherhourlytemp {
-  font-size: 16px;
+  font-size: 17px;
   padding-bottom: 5px; }
 
 #weatherdailycontainer {
@@ -331,8 +335,35 @@ nav ul {
 #weatherdailysummary {
   font-size: 15px; }
 
+#weatherdailyforecast {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 17px; }
+
+.weatherdailyentry {
+  display: table-row; }
+
+.weatherdailyweekday {
+  display: table-cell; }
+
+.weatherdailyicon {
+  display: table-cell;
+  padding-right: 20px;
+  padding-left: 30px;
+  position: relative;
+  top: 8px; }
+
+.weatherdailyhigh {
+  display: table-cell;
+  padding-right: 15px;
+  padding-left: 15px; }
+
 .weatherdailylow {
-  color: gray; }
+  color: gray;
+  display: table-cell;
+  padding-right: 15px;
+  padding-left: 15px; }
 
 html, body, #app {
   margin: 0;
@@ -348,7 +379,7 @@ html, body, #app {
 
 * {
   box-sizing: border-box;
-  /* user-select: none; */ }
+  user-select: none; }
 
 body {
   background: #212121;

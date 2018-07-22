@@ -3,8 +3,6 @@ import React from 'react';
 export default class WeatherDailyEntry extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-        }
     }
 
     componentDidMount() {
@@ -17,9 +15,9 @@ export default class WeatherDailyEntry extends React.Component {
         const weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         return (
             <div className="weatherdailyentry">
-                {weekDays[this.props.day]}
-                <canvas id={`weatherdailyicon${this.props.id}`} width="30" height="30"></canvas>
-                <span className="weatherdailyhigh">{Math.round(this.props.weather.temperatureHigh)}˚&nbsp;&nbsp;&nbsp;</span>
+                <span className="weatherdailyweekday">{weekDays[this.props.day]}</span>
+                <canvas className="weatherdailyicon" id={`weatherdailyicon${this.props.id}`} width="30" height="30"></canvas>
+                <span className="weatherdailyhigh">{Math.round(this.props.weather.temperatureHigh)}˚</span>
                 <span className="weatherdailylow">{Math.round(this.props.weather.temperatureLow)}˚</span>
             </div>
         )
