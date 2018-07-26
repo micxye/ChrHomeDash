@@ -10,10 +10,9 @@ const toDoSource = {
             originalIndex: props.findToDo(props.id).index,
         }
     },
-
     endDrag(props, monitor) {
-        const { id: droppedId, originalIndex } = monitor.getItem()
-        const didDrop = monitor.didDrop()
+        const { id: droppedId, originalIndex } = monitor.getItem();
+        const didDrop = monitor.didDrop();
 
         if (!didDrop) {
             props.moveToDo(droppedId, originalIndex)
@@ -23,16 +22,15 @@ const toDoSource = {
 
 const toDoTarget = {
     canDrop() {
-        return false
+        return false;
     },
-
     hover(props, monitor) {
-        const { id: draggedId } = monitor.getItem()
-        const { id: overId } = props
+        const { id: draggedId } = monitor.getItem();
+        const { id: overId } = props;
 
         if (draggedId !== overId) {
-            const { index: overIndex } = props.findToDo(overId)
-            props.moveToDo(draggedId, overIndex)
+            const { index: overIndex } = props.findToDo(overId);
+            props.moveToDo(draggedId, overIndex);
         }
     },
 }
@@ -46,6 +44,11 @@ const toDoTarget = {
 }))
 
 export default class ToDoEntry extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { complete: this.props.complete }
+    }
+
     static propTypes = {
         connectDragSource: PropTypes.func.isRequired,
         connectDropTarget: PropTypes.func.isRequired,
@@ -57,12 +60,16 @@ export default class ToDoEntry extends Component {
         findToDo: PropTypes.func.isRequired,
     }
 
+    handleClick(id) {
+        this.setState({ complete: !this.state.complete });
+        this.props.completeToDo(id);
+    }
+
     render() {
         const {
             id,
             text,
             isDragging,
-            completeToDo,
             removeToDo,
             connectDragSource,
             connectDropTarget,
@@ -73,10 +80,7 @@ export default class ToDoEntry extends Component {
             connectDropTarget(
                 <div style={{ opacity }} className="todoentry">
                     <div className="checkboxtodotext">
-                        {(() => this.props.complete ?
-                            <input checked type="checkbox" value="None" id={this.props.id} name="check" onClick={() => { completeToDo(id) }} /> :
-                            <input type="checkbox" value="None" id={this.props.id} name="check" onClick={() => { completeToDo(id) }} />
-                        )()}
+                        <input checked={this.state.complete} type="checkbox" value={this.state.complete} id={this.props.id} name="check" onChange={() => this.handleClick(id)}/>
                         <label htmlFor={this.props.id} className={(() => this.props.complete ? "complete" : "incomplete")()}>
                             <span></span>
                             {text}

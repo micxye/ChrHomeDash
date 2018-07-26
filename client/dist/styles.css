@@ -395,7 +395,8 @@ input::-webkit-input-placeholder {
   position: relative; }
 
 .citysuggestionitem :hover {
-  background-color: gray; }
+  background-color: gray;
+  cursor: pointer; }
 
 .cityhighlight {
   background-color: rgba(78, 250, 87, 0.678); }

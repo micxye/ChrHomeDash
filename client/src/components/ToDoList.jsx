@@ -61,7 +61,7 @@ export default class ToDoList extends React.Component {
         };
         const toDoList = this.state.toDos.slice();
         toDoList.push(toDo);
-        this.setState({ toDos: toDoList })
+        this.setState({ toDos: toDoList });
         this.saveToDoList();
     }
 
@@ -69,7 +69,7 @@ export default class ToDoList extends React.Component {
         const targetIndex = this.findToDo(id).index;
         const toDoList = this.state.toDos.slice();
         toDoList.splice(targetIndex, 1);
-        this.setState({ toDos: toDoList })
+        this.setState({ toDos: toDoList });
         this.saveToDoList();
     }
 
@@ -77,26 +77,26 @@ export default class ToDoList extends React.Component {
         const targetIndex = this.findToDo(id).index;
         const toDoList = this.state.toDos.slice();
         toDoList[targetIndex].complete = !toDoList[targetIndex].complete;
-        this.setState({ toDos: toDoList })
+        this.setState({ toDos: toDoList });
         this.saveToDoList();
     }
 
     moveToDo(id, atIndex) {
-        const { toDo, index } = this.findToDo(id)
+        const { toDo, index } = this.findToDo(id);
         this.setState(
             update(this.state, {
                 toDos: {
                     $splice: [[index, 1], [atIndex, 0, toDo]],
                 },
             }),
-        )
+        );
         this.saveToDoList();
-        console.log(this.state.toDos)
+        console.log(this.state.toDos);
     }
 
     findToDo(id) {
-        const { toDos } = this.state
-        const toDo = toDos.filter(c => c.id === id)[0]
+        const { toDos } = this.state;
+        const toDo = toDos.filter(c => c.id === id)[0];
         return {
             toDo,
             index: toDos.indexOf(toDo),
