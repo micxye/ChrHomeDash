@@ -14,6 +14,7 @@ export default class WeatherWidget extends React.Component {
             ip: "136.25.147.85", //ip.address(),
             weather: ""
         }
+        this.handleSuggestionClick = this.handleSuggestionClick.bind(this);
     }
 
     componentDidMount() {
@@ -25,7 +26,7 @@ export default class WeatherWidget extends React.Component {
         axios.post(`http://localhost:8888/localweather`, { ip: this.state.ip })
             .then(response => {
                 console.table(response.data);
-                this.setState({ weather: response.data })
+                this.setState({ weather: response.data });
                 this.initializeForecastDropdowns();
                 $(document).ready(() => $('#app').fadeIn());
             })
@@ -67,10 +68,14 @@ export default class WeatherWidget extends React.Component {
         triggers.forEach(trigger => trigger.addEventListener('mouseleave', handleLeave));
     }
 
+    handleSuggestionClick(cityCoordinates) {
+        console.log(cityCoordinates);
+    }
+
     render() {
         return this.state.weather === "" ? <WeatherLoading /> :
             <div id="weatherwidget">
-                <WeatherCurrent weather={this.state.weather}/>
+                <WeatherCurrent weather={this.state.weather} handleSuggestionClick={this.handleSuggestionClick}/>
                 <nav id="forecastnav">
                     <div className="dropdownbackground"></div>
                     <ul className="forecast">

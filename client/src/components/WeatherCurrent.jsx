@@ -1,4 +1,5 @@
 import React from 'react';
+import WeatherSearchForm from './WeatherSearchForm.jsx';
 
 export default class WeatherCurrent extends React.Component {
     constructor(props) {
@@ -16,7 +17,11 @@ export default class WeatherCurrent extends React.Component {
             <div id="weathercurrentbox">
                 <canvas id="currentweathericon" width="90" height="90"></canvas>
                 <div id="temperaturecurrentbox">
-                    <div id="currentcity">{this.props.weather.city}</div>
+                    <div id="weathercityandsearch">
+                        <div id="currentcity">{this.props.weather.city}</div>
+                        <div className="suggestionsoverlay"></div>
+                        <WeatherSearchForm handleSuggestionClick={this.props.handleSuggestionClick}/>
+                    </div>
                     <div id="currenttempsummary">
                         {Math.round(this.props.weather.currently.temperature)}˚ {this.props.weather.currently.summary}  
                     </div>

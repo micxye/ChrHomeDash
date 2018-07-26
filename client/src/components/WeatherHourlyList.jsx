@@ -4,14 +4,12 @@ import WeatherHourlyEntry from './WeatherHourlyEntry.jsx';
 export default class WeatherHourlyList extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            currentHour: null
-        }
+        this.state = { currentHour: null }
     }
 
     componentDidMount() {
-        const now = new Date();
-        this.setState({ currentHour: now.getHours() })
+        const now = new Date(Number(`${this.props.weatherHourly.data[0].time}000`));
+        this.setState({ currentHour: now.getHours() });
         this.initializeClickAndDrag();
     }
 
@@ -26,25 +24,25 @@ export default class WeatherHourlyList extends React.Component {
             startX = e.pageX - slider.offsetLeft;
             scrollLeft = slider.scrollLeft;
             slider.classList.add('grabscrollactive');
-        })
+        });
 
         slider.addEventListener('mouseleave', () => {
             isDown = false;
             slider.classList.remove('grabscrollactive');
-        })
+        });
 
         slider.addEventListener('mouseup', () => {
             isDown = false;
             slider.classList.remove('grabscrollactive');
-        })
+        });
 
         slider.addEventListener('mousemove', (e) => {
             if (!isDown) return; 
             e.preventDefault();
             const x = e.pageX - slider.offsetLeft;
-            const walk = (x - startX) * 2;
+            const walk = (x - startX) * 3;
             slider.scrollLeft = scrollLeft - walk;
-        })
+        });
     }
 
     render() {
