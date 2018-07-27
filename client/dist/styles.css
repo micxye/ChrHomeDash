@@ -156,8 +156,10 @@ input[type='checkbox']:checked + label > span:before {
 
 #datetimecontainer {
   width: 420px;
-  height: 150px;
-  display: flex; }
+  height: 120px;
+  display: flex;
+  position: relative;
+  top: 7px; }
 
 #datetime {
   float: right;
@@ -209,6 +211,14 @@ input[type='checkbox']:checked + label > span:before {
 .hour-hand {
   background: #969292; }
 
+#date {
+  position: relative;
+  bottom: 10px; }
+
+#time {
+  position: relative;
+  bottom: 20px; }
+
 #dashboardcontainer {
   width: 70%;
   height: 100%;
@@ -235,10 +245,11 @@ input[type='checkbox']:checked + label > span:before {
   max-width: 40px; }
 
 #weatherwidget {
-  margin-top: 10px;
   font-size: 15px;
   display: block;
-  height: 145px; }
+  position: relative;
+  top: 10px;
+  height: 117px; }
 
 nav ul {
   list-style: none;

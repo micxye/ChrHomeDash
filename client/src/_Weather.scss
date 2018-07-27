@@ -12,10 +12,11 @@ $background-color: #212121;
 }
 
 #weatherwidget {
-    margin-top: 10px;
     font-size: 15px;
     display: block;
-    height: 145px;
+    position: relative;
+    top: 10px;
+    height: 117px;
 }
 
 nav ul {

@@ -69,13 +69,17 @@ export default class DateTime extends React.Component {
                 </div>
                 <div id="datetime">
                     <a id="weekday">Weekday</a><br />
-                    <a id="mon">January</a>&nbsp;
-                    <a id="d">1</a>,&nbsp;
-                    <a id="y">0</a><br />
-                    <a id="h">12</a>:
-                    <a id="m">00</a>:
-                    <a id="s">00</a>
-                    <a id="mi">000</a>
+                    <div id="date">
+                        <a id="mon">January</a>&nbsp;
+                        <a id="d">1</a>,&nbsp;
+                        <a id="y">0</a><br />
+                    </div>
+                    <div id="time">
+                        <a id="h">12</a>:
+                        <a id="m">00</a>:
+                        <a id="s">00</a>
+                        <a id="mi">000</a>
+                    </div>
                 </div>
             </div>
         )

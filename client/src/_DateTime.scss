@@ -4,8 +4,10 @@
 
 #datetimecontainer {
     width: 420px;
-    height: 150px;
+    height: 120px;
     display: flex;
+    position: relative;
+    top: 7px;
 }
 
 #datetime {
@@ -67,4 +69,14 @@
 
 .hour-hand {
     background: rgb(150, 146, 146);
+}
+
+#date {
+    position: relative;
+    bottom: 10px;
+}
+
+#time {
+    position: relative;
+    bottom: 20px;
 }
