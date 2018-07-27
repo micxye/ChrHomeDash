@@ -1,10 +1,21 @@
 $background-color: #212121;
 
+#weatherloading {
+    position: relative;
+    left: 150px;
+    top: 40px;
+}
+
+.loading {
+    max-height: 40px;
+    max-width: 40px; 
+}
+
 #weatherwidget {
     margin-top: 10px;
     font-size: 15px;
     display: block;
-    height: auto;
+    height: 145px;
 }
 
 nav ul {
@@ -76,7 +87,7 @@ nav ul {
 }
 
 #currenttempsummary {
-    font-size: 40px;
+    font-size: 35px;
     position: relative;
     bottom: 10px;
 }
