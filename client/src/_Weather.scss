@@ -16,7 +16,13 @@ $background-color: #212121;
     display: block;
     position: relative;
     top: 10px;
-    height: 117px;
+    height: 127px;
+}
+
+#forecastnav {
+    z-index: 1;
+    position: relative;
+    bottom: 22px;
 }
 
 nav ul {
@@ -24,11 +30,6 @@ nav ul {
     margin: 0;
     padding: 0;
     display: flex;
-}
-
-.forecast {
-    position: relative;
-    bottom: 22px;
 }
 
 .forecast > li {
@@ -195,7 +196,7 @@ nav ul {
     width: 200px;
     margin: 0;
     padding-left: 10px;
-    z-index: 1;
+    z-index: 2;
     display: none;
 }
 
