@@ -33,6 +33,16 @@ export default class WeatherWidget extends React.Component {
             .catch(error => console.log(error));
     }
 
+    changeWeather(place) {
+        axios.post(`http://localhost:8888/weather`, { place })
+            .then(response => {
+                console.table(response.data);
+                this.setState({ weather: response.data });
+                this.initializeForecastDropdowns();
+            })
+            .catch(error => console.log(error));
+    }
+
     initializeForecastDropdowns() {
         const triggers = document.querySelectorAll('.forecast > li');
         const background = document.querySelector('.dropdownbackground');
@@ -68,8 +78,9 @@ export default class WeatherWidget extends React.Component {
         triggers.forEach(trigger => trigger.addEventListener('mouseleave', handleLeave));
     }
 
-    handleSuggestionClick(cityCoordinates) {
-        console.log(cityCoordinates);
+    handleSuggestionClick(place) {
+        this.setState({ weather: "" });
+        this.changeWeather(place);
     }
 
     render() {

@@ -23,33 +23,47 @@ let toDoList = [{
 
 app.get('/todolist', (req, res) => {
     res.send(toDoList);
-})
+});
 
 app.post('/todolist', (req, res) => {
     toDoList = req.body;
     res.send('list updated in server')
     console.log(toDoList)
-})
+});
 
 app.post('/localweather', (req, res) => {
     const clientIp = req.body.ip;
     // get lat/long from client IP
     axios.get(`http://api.ipstack.com/${clientIp}?access_key=${process.env.IPSTACK_API}`)
-        .then(function (response) {
+        .then(response => {
             const { latitude, longitude, city } = response.data;
             // send lat/long to darksky API, to retrieve local weather data
             axios.get(`https://api.darksky.net/forecast/${process.env.DARKSKY_API}/${latitude},${longitude}`)
-                .then(function (response) {
+                .then(response => {
                     res.send(Object.assign(response.data, {city}));
                 })
-                .catch(function (error) {
+                .catch(error => {
                     console.log(error);
                     res.send(error);
                 });
         })
-        .catch(function (error) {
+        .catch(error => {
             console.log(error);
+            res.send(error);
         });
-})
+});
 
-app.listen(port, () => console.log(`Server is listening to port ${port}`))
+app.post('/weather', (req, res) => {
+    let { coordinates, city } = req.body.place;
+    city = city.split(', ')[0].replace(/\b\w/g, l => l.toUpperCase());
+    axios.get(`https://api.darksky.net/forecast/${process.env.DARKSKY_API}/${coordinates}`)
+        .then(response => {
+            res.send(Object.assign(response.data, { city }));
+        })
+        .catch(error => {
+            console.log(error);
+            res.send(error);
+        });
+});
+
+app.listen(port, () => console.log(`Server is listening to port ${port}`));

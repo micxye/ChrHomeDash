@@ -56,8 +56,10 @@ export default class WeatherSearchForm extends React.Component {
 
         const context = this;
         $('.citysuggestionitem').on('click', function() {
-            const coords = $(this).find($('.citycoords')).text();
-            context.props.handleSuggestionClick(coords);
+            const coordinates = $(this).find($('.citycoords')).text();
+            const city = $(this).find($('.cityname')).text();
+            const place = { city, coordinates };
+            context.props.handleSuggestionClick(place);
         })
         // hide suggestions when clicking elsewhere
         const hideSuggestions = () => suggestions.classList.remove('show');
