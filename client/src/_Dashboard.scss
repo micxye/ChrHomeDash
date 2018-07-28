@@ -6,13 +6,29 @@
     margin: 10px;
 }
 
-#dashboardwindow {
-    width: 100%;
-    height: 100%;
-}
-
 #dashboardhome {
     width: 100%;
     height: 100%;
     display: flex;
+    flex-direction: column;
+}
+
+#timeandweather {
+    display: flex;
+}
+
+#nontimeandweather {
+    display: flex;
+}
+
+#homeleft {
+    display: flex;
+    flex-direction: column;
+    width: 420px;
+}
+
+#homeright {
+    display: flex;
+    flex-direction: column;
+    width: 520px;
 }

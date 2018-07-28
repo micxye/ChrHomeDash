@@ -12,9 +12,7 @@ export default class Dashboard extends React.Component {
     render() {
         return (
             <div id="dashboardcontainer">
-                <div id="dashboardwindow">
-                    <DashboardHome />
-                </div>
+                <DashboardHome />
                 <div id="navbar">
 
                 </div>

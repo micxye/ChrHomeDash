@@ -92,6 +92,8 @@ nav ul {
     font-size: 35px;
     position: relative;
     bottom: 10px;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 #currenthighlow {
