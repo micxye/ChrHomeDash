@@ -15,10 +15,13 @@
 
 #timeandweather {
     display: flex;
+    height: auto;
+    position: relative;
 }
 
 #nontimeandweather {
     display: flex;
+    position: relative;
 }
 
 #homeleft {

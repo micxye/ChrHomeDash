@@ -233,10 +233,13 @@ input[type='checkbox']:checked + label > span:before {
   flex-direction: column; }
 
 #timeandweather {
-  display: flex; }
+  display: flex;
+  height: auto;
+  position: relative; }
 
 #nontimeandweather {
-  display: flex; }
+  display: flex;
+  position: relative; }
 
 #homeleft {
   display: flex;
@@ -298,8 +301,8 @@ nav ul {
   opacity: 1; }
 
 .dropdownbackground {
-  width: 100px;
-  height: 100px;
+  width: 1px;
+  height: 1px;
   position: absolute;
   background: #292929;
   border-radius: 4px;
@@ -511,6 +514,89 @@ input::-webkit-input-placeholder {
   display: table-cell;
   padding-right: 15px;
   padding-left: 15px; }
+
+#hnfeed {
+  position: relative;
+  font-family: Verdana, Geneva, sans-serif; }
+
+#hntopbar {
+  background-color: #f87800;
+  height: 22px;
+  width: 560px;
+  display: flex;
+  font-size: 14px;
+  color: black; }
+
+#hnnav {
+  position: relative;
+  top: 1px; }
+
+#ylogo {
+  padding-left: 3px;
+  position: relative;
+  top: 2px; }
+
+#hackernews {
+  position: relative;
+  bottom: 2px;
+  font-weight: bold;
+  padding-left: 5px;
+  padding-right: 10px; }
+
+#hnfeedlist {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  list-style-type: none;
+  overflow: auto;
+  max-height: 190px;
+  width: 560px;
+  font-size: 14px; }
+
+.hnfeeditem {
+  display: flex; }
+
+.storyrank {
+  padding-right: 5px; }
+
+.storylink {
+  color: white;
+  padding-right: 5px;
+  text-decoration: none; }
+
+.storylink:visited {
+  color: gray; }
+
+.storysource {
+  font-size: 12px;
+  color: gray; }
+
+.storyinfo {
+  font-size: 11px;
+  position: relative;
+  bottom: 3px; }
+
+.hnlink {
+  font-size: 11px;
+  position: relative;
+  bottom: 3px;
+  color: white;
+  text-decoration: none; }
+
+.hnlink:hover {
+  text-decoration: underline; }
+
+#hntop:hover {
+  cursor: pointer; }
+
+#hnshow:hover {
+  cursor: pointer; }
+
+#hnask:hover {
+  cursor: pointer; }
+
+#hnbest:hover {
+  cursor: pointer; }
 
 html, body, #app {
   margin: 0;

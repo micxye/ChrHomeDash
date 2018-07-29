@@ -72,6 +72,8 @@ export default class WeatherWidget extends React.Component {
         function handleLeave() {
             this.classList.remove('trigger-enter', 'trigger-enter-active');
             background.classList.remove('open');
+            background.style.setProperty('width', `1px`);
+            background.style.setProperty('height', `1px`);
         }
 
         triggers.forEach(trigger => trigger.addEventListener('mouseenter', handleEnter));
