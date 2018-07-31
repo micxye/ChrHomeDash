@@ -18,7 +18,7 @@ export default class HNFeedItem extends React.Component {
                 </div>
                 <div>
                     <a href={url} className="storylink">
-                        {title}
+                        {title}&nbsp;
                         <span className="storysource">{hostname}</span>
                     </a><br></br>
                     <span className="storyinfo">{score} points by {by} {moment(moment.unix(time)).fromNow()} |&nbsp;</span>

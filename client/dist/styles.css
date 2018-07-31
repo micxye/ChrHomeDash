@@ -557,7 +557,8 @@ input::-webkit-input-placeholder {
   display: flex; }
 
 .storyrank {
-  padding-right: 5px; }
+  padding-right: 5px;
+  padding-left: 7px; }
 
 .storylink {
   color: white;
