@@ -35,7 +35,6 @@ export default class WeatherWidget extends React.Component {
     changeWeather(place) {
         axios.post(`http://localhost:8888/weather`, { place })
             .then(response => {
-                console.table(response.data);
                 this.setState({ weather: response.data });
                 this.initializeForecastDropdowns();
             })
