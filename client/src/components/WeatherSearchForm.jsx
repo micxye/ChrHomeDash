@@ -31,8 +31,6 @@ export default class WeatherSearchForm extends React.Component {
                 const regex = new RegExp(wordToMatch, 'gi');
                 return place.city.match(regex) || place.state.match(regex);
             });
-            // console.log(wordToMatch);
-            // console.log(suggestions);
             this.setState({ suggestions, input: wordToMatch });
         }
     }

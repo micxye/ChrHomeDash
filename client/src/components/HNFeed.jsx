@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import HNFeedItem from './HNFeedItem.jsx';
-import $ from 'jquery';
 
 export default class HNFeed extends React.Component {
     constructor(props) {
@@ -47,7 +46,6 @@ export default class HNFeed extends React.Component {
 
     changeView(view) {
         const { id } = view.target;
-        console.log(id)
         if (id === 'hntop') this.setState({ view: 'topStories' });
         if (id === 'hnbest') this.setState({ view: 'bestStories' });
         if (id === 'hnask') this.setState({ view: 'askStories' });

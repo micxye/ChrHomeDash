@@ -24,16 +24,16 @@ export default class ToDoList extends React.Component {
         super(props);
         this.state = {
             toDos: []
-        }
-        this.moveToDo = this.moveToDo.bind(this)
-        this.findToDo = this.findToDo.bind(this)
-        this.completeToDo = this.completeToDo.bind(this)
-        this.removeToDo = this.removeToDo.bind(this)
-        this.addToDo = this.addToDo.bind(this)
+        };
+        this.moveToDo = this.moveToDo.bind(this);
+        this.findToDo = this.findToDo.bind(this);
+        this.completeToDo = this.completeToDo.bind(this);
+        this.removeToDo = this.removeToDo.bind(this);
+        this.addToDo = this.addToDo.bind(this);
     }
 
     componentDidMount() {
-        this.getToDoList()
+        this.getToDoList();
     }
 
     getToDoList() {
@@ -44,12 +44,11 @@ export default class ToDoList extends React.Component {
 
     persistToDoList() {
         axios.post('http://localhost:8888/todolist', this.state.toDos)
-            .then(response => console.log(response))
             .catch(error => console.log(error));
     }
 
     saveToDoList() {
-        const save = setTimeout(() => this.persistToDoList(), 300);
+        setTimeout(() => this.persistToDoList(), 300);
     }
 
     addToDo(text) {
@@ -91,7 +90,6 @@ export default class ToDoList extends React.Component {
             }),
         );
         this.saveToDoList();
-        console.log(this.state.toDos);
     }
 
     findToDo(id) {
@@ -104,8 +102,8 @@ export default class ToDoList extends React.Component {
     }
 
     render() {
-        const { connectDropTarget } = this.props
-        const { toDos } = this.state
+        const { connectDropTarget } = this.props;
+        const { toDos } = this.state;
 
         return connectDropTarget(
             <div id="todolistcontainer">

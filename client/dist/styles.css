@@ -516,6 +516,7 @@ input::-webkit-input-placeholder {
   padding-left: 15px; }
 
 #hnfeed {
+  padding-top: 20px;
   position: relative;
   font-family: Verdana, Geneva, sans-serif; }
 

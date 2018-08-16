@@ -1,11 +1,9 @@
-import React from 'react';
+const ToDoListBoard = ({ children }) => (
+    <ul id="todolistboard">
+        <section>
+            {children}
+        </section>
+    </ul>
+);
 
-export default function ToDoListBoard ({ children }) {
-    return (
-        <ul id="todolistboard">
-            <section>
-                {children}
-            </section>
-        </ul>
-    )
-}
+export default ToDoListBoard;

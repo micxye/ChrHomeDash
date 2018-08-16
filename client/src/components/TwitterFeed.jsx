@@ -11,7 +11,7 @@ export default class TwitterFeed extends React.Component {
     render() {
         return (
             <div id="twitterfeed">
-                twitterfeed
+                
             </div>
         )
     }

@@ -11,7 +11,7 @@ export default class HomeFocus extends React.Component {
     render() {
         return (
             <div id="focus">
-                FOCUS
+                
             </div>
         )
     }
