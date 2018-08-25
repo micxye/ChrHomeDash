@@ -3,9 +3,11 @@ const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const axios = require('axios');
+const Twit = require('twit');
+const deepEqual = require('deep-equal')
+const async = require('async')
 
 require('dotenv').load();
-// const db = require('../database/index.js');
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -64,6 +66,40 @@ app.post('/weather', (req, res) => {
             console.log(error);
             res.send(error);
         });
+});
+
+const T = new Twit({
+    consumer_key: `${process.env.T_CONSUMER_KEY}`,
+    consumer_secret: `${process.env.T_CONSUMER_SECRET}`,
+    access_token: `${process.env.T_ACCESS_TOKEN}`,
+    access_token_secret: `${process.env.T_ACCESS_TOKEN_SECRET}`,
+    timeout_ms: 60 * 1000,  // optional HTTP request timeout to apply to all requests.
+    strictSSL: true,     // optional - requires SSL certificates to be valid.
+});
+
+let following = ['realdonaldtrump', 'kanyewest', 'dropsbyjay', 'solelinks'];
+
+let twitterUserTimelines = {};
+
+function getTweets() {
+    for (let i = 0; i < following.length; i++) {
+        if (!twitterUserTimelines[following[i]]) {
+            twitterUserTimelines[following[i]] = [];
+        }
+        T.get('statuses/user_timeline', { screen_name: following[i] }, function (err, data, response) {
+            let tweets = data.map(tweet => {
+                tweet.created_at = Date.parse(tweet.created_at);
+                return tweet;
+            });
+            twitterUserTimelines[following[i]] = tweets;
+        });
+    }
+}
+getTweets();
+setInterval(getTweets, 60000)
+
+app.get('/tweets', (req, res) => {
+    res.send(twitterUserTimelines);
 });
 
 app.listen(port, () => console.log(`Server is listening to port ${port}`));
