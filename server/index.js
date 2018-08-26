@@ -4,8 +4,6 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const Twit = require('twit');
-const deepEqual = require('deep-equal')
-const async = require('async')
 
 require('dotenv').load();
 
@@ -87,6 +85,8 @@ function getTweets() {
             twitterUserTimelines[following[i]] = [];
         }
         T.get('statuses/user_timeline', { screen_name: following[i] }, function (err, data, response) {
+            if (err) console.log(err);
+            
             let tweets = data.map(tweet => {
                 tweet.created_at = Date.parse(tweet.created_at);
                 return tweet;

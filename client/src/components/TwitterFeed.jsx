@@ -1,4 +1,5 @@
 import React from 'react';
+import deepEqual from 'deep-equal';
 
 export default class TwitterFeed extends React.Component {
     constructor(props) {
@@ -6,6 +7,14 @@ export default class TwitterFeed extends React.Component {
         this.state = {
 
         }
+    }
+
+    createFeed() {
+        let twitterFeed = [];
+        for (userFeed in twitterUserTimelines) {
+            twitterFeed.concat(userFeed)
+        }
+        return twitterFeed.sort((a, b) => b.created_at - a.created_at);
     }
 
     render() {

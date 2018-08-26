@@ -9,8 +9,6 @@
 #dashboardhome {
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
 }
 
 #timeandweather {
@@ -30,8 +28,13 @@
     width: 420px;
 }
 
+#calendar {
+    padding-top: 10px;
+    width: 400px;
+    height: 550px;
+    border: none;
+}
+
 #homeright {
-    display: flex;
-    flex-direction: column;
     width: 520px;
 }
