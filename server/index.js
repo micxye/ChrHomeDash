@@ -86,12 +86,13 @@ function getTweets() {
         }
         T.get('statuses/user_timeline', { screen_name: following[i] }, function (err, data, response) {
             if (err) console.log(err);
-            
-            let tweets = data.map(tweet => {
-                tweet.created_at = Date.parse(tweet.created_at);
-                return tweet;
-            });
-            twitterUserTimelines[following[i]] = tweets;
+            if (Array.isArray(data)) {
+                let tweets = data.map(tweet => {
+                    tweet.created_at = Date.parse(tweet.created_at);
+                    return tweet;
+                });
+                twitterUserTimelines[following[i]] = tweets;
+            }
         });
     }
 }
