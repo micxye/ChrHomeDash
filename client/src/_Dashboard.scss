@@ -19,17 +19,15 @@
 
 #nontimeandweather {
     display: flex;
+    min-width: 940px;
     position: relative;
 }
 
 #homeleft {
-    display: flex;
-    flex-direction: column;
     width: 420px;
 }
 
 #calendar {
-    padding-top: 10px;
     width: 400px;
     height: 550px;
     border: none;

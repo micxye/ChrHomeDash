@@ -4,6 +4,8 @@ $background-color: #212121;
     position: relative;
     left: 150px;
     top: 40px;
+    min-height: 142px;
+    min-width: 420px
 }
 
 .loading {
@@ -16,7 +18,8 @@ $background-color: #212121;
     display: block;
     position: relative;
     top: 10px;
-    height: 127px;
+    min-height: 127px;
+    min-width: 420px
 }
 
 #forecastnav {
@@ -64,7 +67,6 @@ nav ul {
     height: 1px;
     position: absolute;
     background: #292929;
-    border-radius: 4px;
     transition:all 0.3s, opacity 0.1s, transform 0.2s;
     transform-origin: 50% 0;
     display: flex;

@@ -1,6 +1,6 @@
 import React from 'react';
 import ToDoList from './ToDoList.jsx';
-import Dashboard from './Dashboard.jsx';
+import DashboardHome from './DashboardHome.jsx'
 
 export default class App extends React.Component {
     constructor(props) {
@@ -13,8 +13,13 @@ export default class App extends React.Component {
     render() {
         return (
             <div id="appcontainer">
-                <ToDoList />
-                <Dashboard />
+                <div id="todolistquotecontainer">
+                    <ToDoList />
+                    <img src="https://i.imgur.com/zKq7Q9n.gif" alt="yung goon jung yoon" id="jung"></img>
+                </div>
+                <div id="dashboardcontainer">
+                    <DashboardHome />
+                </div>
             </div>
         )
     }
