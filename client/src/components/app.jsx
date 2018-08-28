@@ -4,6 +4,7 @@ import DateTime from './DateTime.jsx';
 import WeatherWidget from './WeatherWidget.jsx';
 import TwitterFeed from './TwitterFeed.jsx';
 import HNFeed from './HNFeed.jsx';
+import InspiringQuote from './InspiringQuote.jsx';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -19,6 +20,7 @@ export default class App extends React.Component {
                 <div id="leftsidecontainer">
                     <ToDoList />
                     <img src="https://i.imgur.com/zKq7Q9n.gif" alt="yung goon jung yoon" id="jung"></img>
+                    <InspiringQuote />
                 </div>
                 <div id="rightsidecontainer">
                     <div id="timeandweathercontainer">
