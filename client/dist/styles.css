@@ -1,7 +1,3 @@
-#todolistquotecontainer {
-  width: 440px;
-  min-width: 440px; }
-
 #todolistcontainer {
   width: 420px;
   min-width: 420px;
@@ -163,8 +159,9 @@ input[type='checkbox']:checked + label > span:before {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 384px;
-  height: 216px; }
+  min-width: 384px;
+  min-height: 216px;
+  padding-left: 10px; }
 
 #mi {
   display: none; }
@@ -233,38 +230,6 @@ input[type='checkbox']:checked + label > span:before {
 #time {
   position: relative;
   bottom: 20px; }
-
-#dashboardcontainer {
-  width: 70%;
-  height: 100%;
-  float: right;
-  order: 2;
-  margin: 10px; }
-
-#dashboardhome {
-  width: 100%;
-  height: 100%; }
-
-#timeandweather {
-  display: flex;
-  height: auto;
-  position: relative; }
-
-#nontimeandweather {
-  display: flex;
-  min-width: 940px;
-  position: relative; }
-
-#homeleft {
-  width: 420px; }
-
-#calendar {
-  width: 400px;
-  height: 550px;
-  border: none; }
-
-#homeright {
-  width: 520px; }
 
 #weatherloading {
   position: relative;
@@ -638,6 +603,38 @@ body {
   align-items: center;
   font: 24px/1.4 "RobotoDraft", sans-serif;
   color: #fff; }
+
+#leftsidecontainer {
+  width: 440px;
+  min-width: 440px; }
+
+#rightsidecontainer {
+  width: 70%;
+  height: 100%;
+  float: right;
+  order: 2;
+  margin: 10px; }
+
+#timeandweathercontainer {
+  display: flex;
+  height: auto;
+  position: relative; }
+
+#calendarandfeedscontainer {
+  display: flex;
+  min-width: 940px;
+  position: relative; }
+
+#calendarcontainer {
+  width: 420px; }
+
+#calendar {
+  width: 400px;
+  height: 550px;
+  border: none; }
+
+#feedscontainer {
+  width: 520px; }
 
 @keyframes fadein {
   from {

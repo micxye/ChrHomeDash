@@ -1,6 +1,5 @@
 @import 'ToDoList';
 @import 'DateTime';
-@import 'Dashboard';
 @import 'Weather';
 @import 'HNFeed';
 
@@ -29,6 +28,45 @@ body{
   align-items: center;
   font: 24px/1.4 "RobotoDraft", sans-serif;
   color: #fff;
+}
+
+#leftsidecontainer {
+  width: 440px;
+  min-width: 440px;
+}
+
+#rightsidecontainer {
+    width: 70%;
+    height: 100%;
+    float: right;
+    order: 2;
+    margin: 10px;
+}
+
+#timeandweathercontainer{
+    display: flex;
+    height: auto;
+    position: relative;
+}
+
+#calendarandfeedscontainer {
+    display: flex;
+    min-width: 940px;
+    position: relative;
+}
+
+#calendarcontainer {
+    width: 420px;
+}
+
+#calendar {
+    width: 400px;
+    height: 550px;
+    border: none;
+}
+
+#feedscontainer {
+    width: 520px;
 }
 
 @keyframes fadein {
