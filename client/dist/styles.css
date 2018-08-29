@@ -4,7 +4,7 @@
   height: 100%;
   order: 1;
   margin-top: 15px;
-  margin-left: 20px;
+  margin-left: 21px;
   display: inline-block;
   max-height: 300px; }
 
@@ -15,7 +15,9 @@
   font-size: 16px; }
 
 #todoinput {
-  width: 330px;
+  width: 310px;
+  margin-right: 19px;
+  border-radius: 25px;
   float: right; }
 
 #addtodobutton {
@@ -24,6 +26,7 @@
 #addtodotext {
   display: inline;
   font-size: 15px;
+  margin-left: 8px;
   text-align: center; }
 
 #todolistboard {
@@ -40,7 +43,8 @@
   background-color: #212121;
   cursor: pointer;
   font-size: 16px;
-  display: flex; }
+  display: flex;
+  width: 410px; }
 
 .checkboxtodotext {
   width: 99%; }
@@ -55,7 +59,9 @@
   font-size: 16px;
   color: #585858;
   background-color: #212121;
-  border-color: #212121; }
+  outline: 0;
+  border: none;
+  cursor: pointer; }
 
 .x:hover {
   color: #c300ff;
@@ -159,10 +165,10 @@ input[type='checkbox']:checked + label > span:before {
   margin-left: auto;
   margin-right: auto;
   position: absolute;
-  top: 110px;
-  width: 397px;
+  top: 113px;
+  width: 399px;
   height: 216px;
-  padding-left: 13px;
+  padding-left: 5px;
   z-index: -1;
   visibility: visible;
   opacity: 1;
@@ -177,9 +183,9 @@ input[type='checkbox']:checked + label > span:before {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  min-width: 384px;
+  min-width: 400px;
   min-height: 216px;
-  padding-left: 10px; }
+  padding-left: 6px; }
 
 #quotecontainer {
   display: flex;

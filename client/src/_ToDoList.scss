@@ -6,7 +6,7 @@ $background-color: #212121;
   height: 100%;
   order: 1;
   margin-top: 15px;
-  margin-left: 20px;
+  margin-left: 21px;
   display: inline-block;
   max-height: 300px;
 }
@@ -19,7 +19,9 @@ $background-color: #212121;
 }
 
 #todoinput {
-  width: 330px;
+  width: 310px;
+  margin-right: 19px;
+  border-radius: 25px;
   float: right;
 }
 
@@ -30,6 +32,7 @@ $background-color: #212121;
 #addtodotext {
   display: inline;
   font-size: 15px;
+  margin-left: 8px;
   text-align: center;
 }
 
@@ -49,10 +52,11 @@ $background-color: #212121;
   cursor: pointer;
   font-size: 16px;
   display: flex;
+  width: 410px;
 }
 
 .checkboxtodotext {
-    width: 99%;
+  width: 99%;
 }
 
 .complete {
@@ -66,7 +70,9 @@ $background-color: #212121;
   font-size: 16px;
   color: rgb(88, 88, 88);
   background-color: $background-color;
-  border-color: $background-color;
+  outline: 0;
+  border: none;
+  cursor: pointer;
 }
 
 .x:hover {
@@ -180,10 +186,10 @@ input[type='checkbox']:checked + label > span:before{
   margin-left: auto;
   margin-right: auto;
   position: absolute;
-  top: 110px;
-  width: 397px;
+  top: 113px;
+  width: 399px;
   height: 216px;
-  padding-left: 13px;
+  padding-left: 5px;
   z-index: -1;
   visibility: visible;
   opacity: 1;
@@ -200,9 +206,9 @@ input[type='checkbox']:checked + label > span:before{
   display: block;
   margin-left: auto;
   margin-right: auto;
-  min-width: 384px;
+  min-width: 400px;
   min-height: 216px;
-  padding-left: 10px;
+  padding-left: 6px;
 }
 
 #quotecontainer {
