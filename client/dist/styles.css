@@ -177,7 +177,7 @@ input[type='checkbox']:checked + label > span:before {
 .shia.gone {
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s 15s, opacity 1s linear; }
+  transition: visibility 0s .8s, opacity .8s linear; }
 
 #jung {
   display: block;

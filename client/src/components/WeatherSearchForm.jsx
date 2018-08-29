@@ -42,8 +42,8 @@ export default class WeatherSearchForm extends React.Component {
         const html = this.state.suggestions.map(place => {
             const regex = new RegExp(this.state.input, 'gi');
             const { latitude, longitude } = place;
-            const cityName = place.city.replace(regex, `<span class="cityhighlight">${this.state.input}</span>`)
-            const stateName = place.state.replace(regex, `<span class="cityhighlight">${this.state.input}</span>`);
+            const cityName = place.city.replace(regex, `<span class="cityhighlight">${this.state.input.toLowerCase()}</span>`);
+            const stateName = place.state.replace(regex, `<span class="cityhighlight">${this.state.input.toLowerCase()}</span>`);
             return `
                 <li class="citysuggestionitem">
                     <span class="cityname">${cityName}, ${stateName}<span class="citycoords">${latitude},${longitude}</span></span>
