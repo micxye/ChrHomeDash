@@ -176,6 +176,26 @@ input[type='checkbox']:checked + label > span:before{
   }
 }
 
+.shia {
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  top: 110px;
+  width: 397px;
+  height: 216px;
+  padding-left: 13px;
+  z-index: -1;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 2s linear;
+}
+
+.shia.gone {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 15s, opacity 1s linear;
+}
+
 #jung {
   display: block;
   margin-left: auto;

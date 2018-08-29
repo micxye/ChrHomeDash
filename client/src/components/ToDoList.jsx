@@ -126,6 +126,7 @@ export default class ToDoList extends React.Component {
                             </FadeAndSlideTransition>
                         ))}
                 </TransitionGroup>
+                <img src="https://i.giphy.com/media/xumhomgDQVj0s/giphy.webp" alt="shia" className={(()=> this.state.toDos.length < 3 ? "shia" : "shia gone")()}></img>
             </div>
         )
     }
