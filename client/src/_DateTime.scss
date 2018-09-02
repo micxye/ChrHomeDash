@@ -1,25 +1,16 @@
-#mi {
-  display: none
-}
+$clock-size: 65px;
 
-#datetimecontainer {
+#timecontainer {
     width: 420px;
-    height: 130px;
+    height: 80px;
     display: flex;
     position: relative;
-    top: 7px;
-}
-
-#datetime {
-    float: right;
-    width: 320px;
-    height: 130px;
-    font-size: 33px;
+    left: 5px;
 }
 
 #clockcontainer {
-    width: 100px;
-    height: 100px;
+    width: $clock-size;
+    height: $clock-size;
     float: left;
     position: relative;
     margin: 10px;
@@ -27,9 +18,15 @@
     display:flex;
 }
 
+#time {
+    position: relative;
+    font-size: 75px;
+    bottom: 9px;
+}
+
 .clock {
-    width: 100px;
-    height: 100px;
+    width: $clock-size;
+    height: $clock-size;
     border:3px solid white;
     border-radius:50%;
     position: relative;
@@ -42,8 +39,8 @@
 
 .clock-face {
     position: relative;
-    width: 100px;
-    height: 100px;
+    width: $clock-size;
+    height: $clock-size;
     transform: translateY(-3px) translateX(-3px); /* account for the height of the clock hands */
 }
 
@@ -69,14 +66,4 @@
 
 .hour-hand {
     background: rgb(150, 146, 146);
-}
-
-#date {
-    position: relative;
-    bottom: 10px;
-}
-
-#time {
-    position: relative;
-    bottom: 20px;
 }

@@ -199,34 +199,30 @@ input[type='checkbox']:checked + label > span:before {
 #inspiringquote {
   text-align: center; }
 
-#mi {
-  display: none; }
-
-#datetimecontainer {
+#timecontainer {
   width: 420px;
-  height: 130px;
+  height: 80px;
   display: flex;
   position: relative;
-  top: 7px; }
-
-#datetime {
-  float: right;
-  width: 320px;
-  height: 130px;
-  font-size: 33px; }
+  left: 5px; }
 
 #clockcontainer {
-  width: 100px;
-  height: 100px;
+  width: 65px;
+  height: 65px;
   float: left;
   position: relative;
   margin: 10px;
   font-size: 10px;
   display: flex; }
 
+#time {
+  position: relative;
+  font-size: 75px;
+  bottom: 9px; }
+
 .clock {
-  width: 100px;
-  height: 100px;
+  width: 65px;
+  height: 65px;
   border: 3px solid white;
   border-radius: 50%;
   position: relative;
@@ -234,8 +230,8 @@ input[type='checkbox']:checked + label > span:before {
 
 .clock-face {
   position: relative;
-  width: 100px;
-  height: 100px;
+  width: 65px;
+  height: 65px;
   transform: translateY(-3px) translateX(-3px);
   /* account for the height of the clock hands */ }
 
@@ -259,14 +255,6 @@ input[type='checkbox']:checked + label > span:before {
 .hour-hand {
   background: #969292; }
 
-#date {
-  position: relative;
-  bottom: 10px; }
-
-#time {
-  position: relative;
-  bottom: 20px; }
-
 #weatherloading {
   position: relative;
   left: 150px;
@@ -282,8 +270,7 @@ input[type='checkbox']:checked + label > span:before {
   font-size: 15px;
   display: block;
   position: relative;
-  top: 10px;
-  min-height: 127px;
+  min-height: 120px;
   min-width: 420px; }
 
 #forecastnav {
@@ -535,7 +522,8 @@ input::-webkit-input-placeholder {
 
 #hnfeed {
   position: relative;
-  font-family: Verdana, Geneva, sans-serif; }
+  font-family: Verdana, Geneva, sans-serif;
+  bottom: 10px; }
 
 #hntopbar {
   background-color: #f87800;
@@ -662,11 +650,13 @@ body {
   position: relative; }
 
 #calendarcontainer {
-  width: 420px; }
+  width: 420px;
+  position: relative;
+  bottom: 55px; }
 
 #calendar {
   width: 400px;
-  height: 570px;
+  height: 400px;
   border: none; }
 
 #feedscontainer {

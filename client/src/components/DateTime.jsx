@@ -13,19 +13,11 @@ export default class DateTime extends React.Component {
     initClock() {
         const updateClock = () => {
             const now = new Date();
-            const milli = now.getMilliseconds(),
-                sec = now.getSeconds(),
-                min = now.getMinutes(),
-                hou = now.getHours(),
-                mo = now.getMonth(),
-                dy = now.getDate(),
-                yr = now.getFullYear(),
-                weekDay = now.getDay()
-            const weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-            const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-            const tags = ["mon", "d", "y", "h", "m", "s", "mi", "weekday"],
-                corr = [months[mo], dy, yr, hou.pad(2), min.pad(2), sec.pad(2), milli, weekDays[weekDay]];
-            
+            const sec = now.getSeconds(),
+                  min = now.getMinutes(),
+                  hou = now.getHours(),
+                  tags = ["h", "m", "s"],
+                  corr = [hou.pad(2), min.pad(2), sec.pad(2)];
             // Digital clock
             for (var i = 0; i < tags.length; i++) {
                 document.getElementById(tags[i]).firstChild.nodeValue = corr[i];
@@ -48,7 +40,7 @@ export default class DateTime extends React.Component {
             hourHand.style.transform = `rotate(${hourDegrees}deg)`;  
         }
         updateClock();
-        window.setInterval(updateClock, 1);
+        window.setInterval(updateClock, 1000);
     }
 
     componentDidMount() {
@@ -57,7 +49,7 @@ export default class DateTime extends React.Component {
     
     render() {
         return (
-            <div id="datetimecontainer">
+            <div id="timecontainer">
                 <div id="clockcontainer">
                     <div className="clock">
                         <div className="clock-face">
@@ -67,19 +59,10 @@ export default class DateTime extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div id="datetime">
-                    <a id="weekday">Weekday</a><br />
-                    <div id="date">
-                        <a id="mon">January</a>&nbsp;
-                        <a id="d">1</a>,&nbsp;
-                        <a id="y">0</a><br />
-                    </div>
-                    <div id="time">
-                        <a id="h">12</a>:
-                        <a id="m">00</a>:
-                        <a id="s">00</a>
-                        <a id="mi">000</a>
-                    </div>
+                <div id="time">
+                    <a id="h">12</a>:
+                    <a id="m">00</a>:
+                    <a id="s">00</a>
                 </div>
             </div>
         )
