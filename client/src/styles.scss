@@ -15,8 +15,9 @@ html, body, #app {
 }
 
 #appcontainer {
-    width: 100%;
+    width: 1440px;
     height: 100%;
+    margin: auto;
     display: flex;
 }
 
@@ -47,28 +48,43 @@ body{
     display: flex;
     height: auto;
     position: relative;
+    min-width: 970px;
 }
 
 #calendarandfeedscontainer {
     display: flex;
     min-width: 940px;
     position: relative;
+    bottom: 55px;
+}
+
+#calendartradingviewcontainer {
+    width: 420px;
+    height: 100%;
 }
 
 #calendarcontainer {
     width: 420px;
-    position: relative;
-    bottom: 55px;
 }
 
 #calendar {
-    width: 400px;
-    height: 400px;
+    width: 391px;
+    height: 290px;
     border: none;
+}
+
+#tradingviewcontainer {
+    width: 391px;
+    height: 350px;
+    position: relative;
+    bottom: 14px;
 }
 
 #feedscontainer {
     width: 520px;
+    height: 590px;
+    position: relative;
+    top: 40px;
 }
 
 @keyframes fadein {
