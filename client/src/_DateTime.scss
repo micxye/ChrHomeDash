@@ -41,15 +41,15 @@ $clock-size: 65px;
     position: relative;
     width: $clock-size;
     height: $clock-size;
-    transform: translateY(-3px) translateX(-3px); /* account for the height of the clock hands */
+    transform: translateY(-2px) translateX(-2px); /* account for the height of the clock hands */
 }
 
 .hand {
     width: 50%;
-    height:3px;
+    height:2px;
     background:black;
     position: absolute;
-    top:50%;
+    top:48%;
     transform-origin: 100%;
     transform: rotate(90deg);
     transition: all 0.05s;
