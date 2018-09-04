@@ -42,13 +42,11 @@ export default class ToDoList extends React.Component {
             .catch(error => console.log(error));
     }
 
-    persistToDoList() {
-        axios.post('http://localhost:8888/todolist', this.state.toDos)
-            .catch(error => console.log(error));
-    }
-
     saveToDoList() {
-        setTimeout(() => this.persistToDoList(), 300);
+        setTimeout(() => {
+            axios.post('http://localhost:8888/todolist', this.state.toDos)
+            .catch(error => console.log(error));
+        }, 300);
     }
 
     addToDo(text) {
@@ -131,4 +129,3 @@ export default class ToDoList extends React.Component {
         )
     }
 }
-
