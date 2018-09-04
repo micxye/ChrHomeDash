@@ -2,6 +2,7 @@
 @import 'DateTime';
 @import 'Weather';
 @import 'HNFeed';
+@import 'TwitterFeed';
 
 $background-color: #212121;
 
@@ -81,7 +82,7 @@ body{
 }
 
 #feedscontainer {
-    width: 520px;
+    width: 560px;
     height: 590px;
     position: relative;
     top: 40px;

@@ -1,11 +1,13 @@
 #hnfeed {
     position: relative;
     font-family: Verdana, Geneva, sans-serif;
+    width: 560px;
+    height: 214px;
 }
 
 #hntopbar {
-    background-color: rgb(248, 120, 0); 
-    height: 22px;
+    background-color: rgb(253, 92, 17); 
+    height: 24px;
     width: 560px;
     display: flex;
     font-size: 14px;
@@ -14,18 +16,19 @@
 
 #hnnav {
     position: relative;
-    top: 1px;
+    top: 2px;
 }
 
 #ylogo {
-    padding-left: 3px;
+    margin-left: 3px;
     position: relative;
     top: 2px;
+    border: solid white 1px;
 }
 
 #hackernews {
     position: relative;
-    bottom: 2px;
+    bottom: 3px;
     font-weight: bold;
     padding-left: 5px;
     padding-right: 10px;
