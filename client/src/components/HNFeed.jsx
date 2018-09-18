@@ -7,42 +7,10 @@ export default class HNFeed extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            topStories: [],
-            bestStories: [],
-            askStories: [],
-            showStories: [],
             view: 'topStories'
         }
         this.changeView = this.changeView.bind(this);
         this.renderView = this.renderView.bind(this);
-    }
-
-    componentDidMount() {
-        this.getPosts('topstories');
-        this.getPosts('beststories');
-        this.getPosts('askstories');
-        this.getPosts('showstories');
-    }
-
-    getPosts(type) {
-        axios.get(`https://hacker-news.firebaseio.com/v0/${type}.json`)
-            .then(response => {
-                let stories = [];
-                response.data.slice(0, 30).forEach((story, i) => {
-                    axios.get(`https://hacker-news.firebaseio.com/v0/item/${story}.json`)
-                        .then(response => {
-                            stories.push(response.data);
-                            if (i === 29) {
-                                if (type === 'topstories') this.setState({ topStories: stories });
-                                if (type === 'beststories') this.setState({ bestStories: stories });
-                                if (type === 'askstories') this.setState({ askStories: stories });
-                                if (type === 'showstories') this.setState({ showStories: stories });
-                            }
-                        })
-                        .catch(error => console.log(error));
-                });
-            })
-            .catch(error => console.log(error));
     }
 
     changeView(view) {
@@ -54,7 +22,8 @@ export default class HNFeed extends React.Component {
     }
     
     renderView() {
-        const { topStories, bestStories, askStories, showStories, view} = this.state;
+        const { view } = this.state,
+              { topStories, bestStories, askStories, showStories } = this.props;
 
         if ( topStories.length > 0) {
             if (view === 'topStories') {

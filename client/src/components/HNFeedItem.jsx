@@ -7,8 +7,8 @@ const HNFeedItem = ({ story, ask, number }) => {
     return (
         <li className="hnfeeditem">
             <div className="storyrank">
-                {number}.
-                </div>
+                {number < 10 ? <span className="space">y</span> : ""}{number}.
+            </div>
             <div>
                 <a href={url} className="storylink">
                     {title}&nbsp;

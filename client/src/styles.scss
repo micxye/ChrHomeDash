@@ -8,11 +8,8 @@ $background-color: #212121;
 
 html, body, #app {
     margin: 0;
-    height: 99%;
-}
-
-#app {
-    display: none;
+    height: 100%;
+    overflow: hidden;
 }
 
 #appcontainer {
@@ -66,12 +63,14 @@ body{
 
 #calendarcontainer {
     width: 420px;
+
 }
 
 #calendar {
     width: 391px;
     height: 290px;
     border: none;
+    background: white;
 }
 
 #tradingviewcontainer {
@@ -79,6 +78,7 @@ body{
     height: 350px;
     position: relative;
     bottom: 14px;
+    background: white;
 }
 
 #feedscontainer {

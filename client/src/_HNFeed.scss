@@ -22,7 +22,7 @@
 #ylogo {
     margin-left: 3px;
     position: relative;
-    top: 2px;
+    top: 1px;
     border: solid white 1px;
 }
 
@@ -51,7 +51,11 @@
 
 .storyrank {
     padding-right: 5px;
-    padding-left: 7px;
+    padding-left: 2px;
+}
+
+.space {
+    opacity: 0;
 }
 
 .storylink {
