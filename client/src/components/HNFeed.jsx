@@ -7,7 +7,8 @@ export default class HNFeed extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            view: 'topStories'
+            view: 'default',
+
         }
         this.changeView = this.changeView.bind(this);
         this.renderView = this.renderView.bind(this);
@@ -26,7 +27,7 @@ export default class HNFeed extends React.Component {
               { topStories, bestStories, askStories, showStories } = this.props;
 
         if ( topStories.length > 0) {
-            if (view === 'topStories') {
+            if (view === 'default') {
                 return (
                     <FadeIn>
                         {topStories.map((story, i) => (
@@ -34,30 +35,22 @@ export default class HNFeed extends React.Component {
                         ))}
                     </FadeIn>
                 );
+            } else if (view === 'topStories') {
+                return topStories.map((story, i) => (
+                            <HNFeedItem story={story} key={i} number={i + 1} ask={false} />
+                        ));
             } else if (view === 'bestStories') {
-                return (
-                    <FadeIn>
-                        {bestStories.map((story, i) => (
+                return bestStories.map((story, i) => (
                             <HNFeedItem story={story} key={i} number={i + 1} ask={false} />
-                        ))}
-                    </FadeIn>
-                );
+                        ));
             } else if (view === 'askStories') {
-                return (
-                    <FadeIn>
-                        {askStories.map((story, i) => (
+                return askStories.map((story, i) => (
                             <HNFeedItem story={story} key={i} number={i + 1} ask={true} />
-                        ))}
-                    </FadeIn>
-                );
+                        ));
             } else if (view === 'showStories') {
-                return (
-                    <FadeIn>
-                        {showStories.map((story, i) => (
+                return showStories.map((story, i) => (
                             <HNFeedItem story={story} key={i} number={i + 1} ask={false} />
-                        ))}
-                    </FadeIn>
-                );
+                        ));
             }
         }
     }
