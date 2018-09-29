@@ -1,21 +1,42 @@
 import React from 'react';
-import deepEqual from 'deep-equal';
+// import deepEqual from 'deep-equal';
+import FadeIn from 'react-fade-in';
+import TwitterFeedItem from './TwitterFeedItem.jsx';
 
 export default class TwitterFeed extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            userTimelines: null,
+            twitterFeed: [],
+            view: 'feed',
         }
     }
 
+    componentDidMount() {
+        this.createFeed();
+    }
 
     createFeed() {
         let twitterFeed = [];
-        for (userFeed in twitterUserTimelines) {
-            twitterFeed.concat(userFeed)
+        const { userTimelines } = this.props;
+        for (let user in userTimelines) {
+            twitterFeed = twitterFeed.concat(userTimelines[user]);
         }
-        return twitterFeed.sort((a, b) => b.created_at - a.created_at);
+        twitterFeed.sort((a, b) => b.created_at - a.created_at);
+        this.setState({ twitterFeed });
+    }
+
+    renderTweets() {
+        const { twitterFeed } = this.state;
+        if (twitterFeed.length !== 0) {
+            return (
+                <FadeIn>
+                    {twitterFeed.map((tweet, i) => (
+                        <TwitterFeedItem tweet={tweet} key={i}/>
+                    ))}
+                </FadeIn>
+            );
+        } 
     }
 
     render() {
@@ -26,7 +47,7 @@ export default class TwitterFeed extends React.Component {
                     <span id="twitter">Twitter</span>
                 </div>
                 <ul id="twitterfeedlist">
-
+                    {this.renderTweets()}
                 </ul>
             </div>
         )

@@ -75,7 +75,7 @@ const T = new Twit({
     strictSSL: true,     // optional - requires SSL certificates to be valid.
 });
 
-let following = ['realdonaldtrump', 'kanyewest', 'dropsbyjay', 'solelinks'];
+let following = ['realdonaldtrump', 'kanyewest', 'dropsbyjay', 'rotoworld_bk', 'rotoworld_fb'];
 
 let twitterUserTimelines = {};
 
@@ -84,9 +84,8 @@ function getTweets() {
         if (!twitterUserTimelines[following[i]]) {
             twitterUserTimelines[following[i]] = [];
         }
-        T.get('statuses/user_timeline', { screen_name: following[i], 
-                                          tweet_mode: 'extended',
-                                          count: 50 }, function (err, data, response) {
+        T.get('statuses/user_timeline', { screen_name: following[i], tweet_mode: 'extended', count: 50 }, 
+          function (err, data, response) {
             if (err) console.log(err);
             if (Array.isArray(data)) {
                 let tweets = data.map(tweet => {
@@ -105,4 +104,4 @@ app.get('/tweets', (req, res) => {
     res.send(twitterUserTimelines);
 });
 
-app.listen(port, () => console.log(`Server is listening to port ${port}`));
+app.listen(port, () => console.log(`Server is listening on port ${port}`));

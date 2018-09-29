@@ -120,7 +120,6 @@ export default class App extends React.Component {
     getTwitterTimelines() {
         axios.get('http://localhost:8888/tweets')
             .then(response => {
-                console.log(response.data);
                 this.setState({ userTimelines: response.data })
             })
             .catch(error => console.log(error));
@@ -162,7 +161,7 @@ export default class App extends React.Component {
                             <div id="feedscontainer">
                                 <FadeIn>
                                     <HNFeed topStories={this.state.topStories} bestStories={this.state.bestStories} askStories={this.state.askStories} showStories={this.state.showStories}/>
-                                    <TwitterFeed />
+                                    <TwitterFeed userTimelines={this.state.userTimelines}/>
                                 </FadeIn>
                             </div>
                         </div>
