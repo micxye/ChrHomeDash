@@ -75,8 +75,8 @@ const T = new Twit({
     strictSSL: true,     // optional - requires SSL certificates to be valid.
 });
 
-//let following = ['realdonaldtrump', 'kanyewest', 'dropsbyjay', 'rotoworld_bk', 'rotoworld_fb', 'shamscharania'];
-let following = ['shamscharania'];
+// let following = ['KingJames', 'kanyewest'];
+let following = ['realdonaldtrump', 'KingJames','rotoworld_bk', 'rotoworld_fb', 'shamscharania', 'kanyewest', 'dropsbyjay',];
 
 let twitterUserTimelines = {};
 
@@ -99,7 +99,7 @@ function getTweets() {
     }
 }
 getTweets();
-setInterval(getTweets, 60000)
+setInterval(getTweets, 60000);
 
 app.get('/tweets', (req, res) => {
     res.send(twitterUserTimelines);
