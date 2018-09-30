@@ -75,7 +75,8 @@ const T = new Twit({
     strictSSL: true,     // optional - requires SSL certificates to be valid.
 });
 
-let following = ['realdonaldtrump', 'kanyewest', 'dropsbyjay', 'rotoworld_bk', 'rotoworld_fb'];
+//let following = ['realdonaldtrump', 'kanyewest', 'dropsbyjay', 'rotoworld_bk', 'rotoworld_fb', 'shamscharania'];
+let following = ['shamscharania'];
 
 let twitterUserTimelines = {};
 

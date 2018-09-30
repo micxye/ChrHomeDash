@@ -29,6 +29,14 @@ body{
   color: #fff;
 }
 
+a {
+    color: white;
+}
+
+a:visited {
+    color: gray;
+}
+
 #leftsidecontainer {
   width: 440px;
   min-width: 440px;
@@ -109,6 +117,7 @@ body{
 // SCROLL BARS
 /* width */
 ::-webkit-scrollbar {
+    width: 8px;
     height: 8px;
 }
 
