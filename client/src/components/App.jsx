@@ -131,10 +131,8 @@ export default class App extends React.Component {
                 <div id="appcontainer">
                     <div id="leftsidecontainer">
                         <ToDoList />
-                        <FadeIn>
-                            <img src="https://i.imgur.com/zKq7Q9n.gif" alt="yung goon jung yoon" id="jung"></img>
-                            <InspiringQuote />
-                        </FadeIn>
+                        <img src="https://i.imgur.com/zKq7Q9n.gif" alt="yung goon jung yoon" id="jung"></img>
+                        <InspiringQuote />
                     </div>
                     <div id="rightsidecontainer">
                         <div id="timeandweathercontainer">
@@ -159,10 +157,8 @@ export default class App extends React.Component {
                                 </div>
                             </div>
                             <div id="feedscontainer">
-                                <FadeIn>
-                                    <HNFeed topStories={this.state.topStories} bestStories={this.state.bestStories} askStories={this.state.askStories} showStories={this.state.showStories}/>
-                                    <TwitterFeed userTimelines={this.state.userTimelines}/>
-                                </FadeIn>
+                                <HNFeed topStories={this.state.topStories} bestStories={this.state.bestStories} askStories={this.state.askStories} showStories={this.state.showStories}/>
+                                <TwitterFeed userTimelines={this.state.userTimelines}/>
                             </div>
                         </div>
                     </div>

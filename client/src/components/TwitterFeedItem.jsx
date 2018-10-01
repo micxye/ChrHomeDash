@@ -49,8 +49,8 @@ const parseStatus = (tweet) => {
 }
 
 const parseStatusText = (text) => {
-    let statusText = parseText.parseUrl(text);
-    return addProfileLinks(statusText);
+    let statusText = addProfileLinks(text);
+    return parseText.parseUrl(statusText);
 }
 
 const addProfileLinks = (text) => {

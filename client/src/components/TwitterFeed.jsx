@@ -2,7 +2,7 @@ import React from 'react';
 // import deepEqual from 'deep-equal';
 import FadeIn from 'react-fade-in';
 import TwitterFeedItem from './TwitterFeedItem.jsx';
-import ErrorBoundary from './ErrorBoundary.jsx'
+import TweetErrorBoundary from './TweetErrorBoundary.jsx'
 
 export default class TwitterFeed extends React.Component {
     constructor(props) {
@@ -34,9 +34,9 @@ export default class TwitterFeed extends React.Component {
             return (
                 <FadeIn>
                     {twitterFeed.map((tweet, i) => (
-                        <ErrorBoundary>
+                        <TweetErrorBoundary key={i}>
                             <TwitterFeedItem tweet={tweet} key={i} />
-                        </ErrorBoundary>
+                        </TweetErrorBoundary>
                     ))}
                 </FadeIn>
             );
