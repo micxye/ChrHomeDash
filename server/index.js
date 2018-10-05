@@ -85,7 +85,7 @@ function getTweets() {
         if (!twitterUserTimelines[following[i]]) {
             twitterUserTimelines[following[i]] = [];
         }
-        T.get('statuses/user_timeline', { screen_name: following[i], tweet_mode: 'extended', count: 50 }, 
+        T.get('statuses/user_timeline', { screen_name: following[i], tweet_mode: 'extended', count: 20 }, 
           function (err, data, response) {
             if (err) console.log(err);
             if (Array.isArray(data)) {

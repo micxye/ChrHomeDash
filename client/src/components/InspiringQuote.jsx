@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React from 'react';
+import { Textfit } from 'react-textfit';
 
 export default class InspiringQuote extends React.Component {
     constructor(props) {
@@ -22,6 +23,12 @@ export default class InspiringQuote extends React.Component {
     }
 
     render() {
-        return <div id="quotecontainer"><div id="inspiringquote">{this.state.quote}</div></div>
+        return (
+            <Textfit>
+                <div id="quotecontainer">
+                    {this.state.quote}
+                </div>
+            </Textfit>
+        )
     }
 }
