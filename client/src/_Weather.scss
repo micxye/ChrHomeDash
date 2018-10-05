@@ -25,6 +25,7 @@ $background-color: #212121;
     z-index: 1;
     position: relative;
     bottom: 22px;
+    left: 75px;
 }
 
 nav ul {
@@ -37,10 +38,12 @@ nav ul {
 .forecast > li {
     position: relative;
     margin: 5px;
+    color: gray;
 }
 
 .forecast > li:hover {
     background-color: #292929;
+    color: white;
     cursor: pointer;
 }
 
@@ -85,6 +88,7 @@ nav ul {
 #currentweathericon {
     width: 90px;
     height: 90px;
+    z-index: 2;
 }
 
 #currenttempsummary {
@@ -94,13 +98,6 @@ nav ul {
     bottom: 10px;
     overflow: hidden;
     white-space: nowrap;
-}
-
-#currenthighlow {
-    font-size: 18px;
-    position: relative;
-    right: 10px;
-    bottom: 17px;
 }
 
 #weathercityandsearch {
