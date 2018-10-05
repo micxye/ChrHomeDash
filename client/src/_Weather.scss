@@ -24,8 +24,9 @@ $background-color: #212121;
 #forecastnav {
     z-index: 1;
     position: relative;
-    bottom: 22px;
-    left: 75px;
+    bottom: 44px;
+    left: 278px;
+    font-size: 16px;
 }
 
 nav ul {
@@ -53,6 +54,7 @@ nav ul {
     opacity: 0;
     transition: all 0.5s;
     will-change: opacity;
+    right: 0;
 }
 
 .trigger-enter .dropdown {
@@ -88,7 +90,6 @@ nav ul {
 #currentweathericon {
     width: 90px;
     height: 90px;
-    z-index: 2;
 }
 
 #currenttempsummary {
@@ -98,6 +99,13 @@ nav ul {
     bottom: 10px;
     overflow: hidden;
     white-space: nowrap;
+}
+
+#currenthighlow {
+    font-size: 18px;
+    position: relative;
+    right: 7px;
+    bottom: 17px;
 }
 
 #weathercityandsearch {
