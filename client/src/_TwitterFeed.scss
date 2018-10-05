@@ -1,8 +1,9 @@
 #twitterfeed {
     position: relative;
     width: 560px;
-    height: 385px;
-    font-family: Helvetica, Arial, Sans-serif
+    height: 408px;
+    font-family: Helvetica, Arial, Sans-serif;
+    bottom: 26px;
 }
 
 #twittertopbar {
@@ -20,7 +21,7 @@
     list-style-type: none;
     overflow: auto;
     width: 560px;
-    max-height: 361px;
+    max-height: 384px;
     font-size: 14px;
     padding-top: 5px;
     padding-left: 5px;
