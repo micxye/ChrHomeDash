@@ -4,6 +4,9 @@ import ReactHtmlParser from 'react-html-parser';
 
 const TwitterFeedItem = ({ tweet }) => {
     const status = parseStatus(tweet);
+    if (status.isRetweetStatus) {
+
+    }
     return (
         <li className="twitterfeeditem">
             <img src={status.userPic} alt="Smiley face" className="twitteruserpic"/>
@@ -19,7 +22,7 @@ const TwitterFeedItem = ({ tweet }) => {
                 </div>
                 {renderQuote(status)}
                 <div className="likesbar">
-                
+
                 </div>
             </div>
         </li>
@@ -28,16 +31,22 @@ const TwitterFeedItem = ({ tweet }) => {
 }
 
 const parseStatus = (tweet) => {
-    const status = {
-        createdAt: tweet.created_at,
-        user: tweet.user.name,
-        userName: `@${tweet.user.screen_name}`,
-        userPic: tweet.user.profile_image_url_https,
-        userVerified: tweet.user.verified,
-        text: parseStatusText(tweet.full_text),
-        link: `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`,
-        isQuoteStatus: tweet.is_quote_status,
-    };
+    const status = {};
+
+    if (Boolean(tweet.retweeted_status)) {
+        status.retweeter = tweet.user.name;
+        tweet = tweet.retweeted_status;
+    } 
+    
+    status.createdAt = tweet.created_at;
+    status.user = tweet.user.name;
+    status.userName = `@${tweet.user.screen_name}`;
+    status.userPic = tweet.user.profile_image_url_https;
+    status.userVerified = tweet.user.verified;
+    status.text = parseStatusText(tweet.full_text);
+    status.link = `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`;
+    status.isQuoteStatus = tweet.is_quote_status;
+    
     if (status.isQuoteStatus) {
         status.quotedText = tweet.quoted_status.full_text;
         status.quotedLink = tweet.quoted_status_permalink.expanded;

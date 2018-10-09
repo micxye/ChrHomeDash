@@ -76,7 +76,7 @@ const T = new Twit({
 });
 
 // let following = ['realdonaldtrump', 'kingjames','rotoworld_bk', 'rotoworld_fb', 'shamscharania', 'kanyewest', 'dropsbyjay', 'solelinks'];
-let following = ['realdonaldtrump']
+let following = ['michaelyeaah']
 
 let twitterUserTimelines = {};
 

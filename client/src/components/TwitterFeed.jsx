@@ -1,5 +1,4 @@
 import React from 'react';
-// import deepEqual from 'deep-equal';
 import FadeIn from 'react-fade-in';
 import TwitterFeedItem from './TwitterFeedItem.jsx';
 import TweetErrorBoundary from './TweetErrorBoundary.jsx'
