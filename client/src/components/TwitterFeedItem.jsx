@@ -4,25 +4,25 @@ import ReactHtmlParser from 'react-html-parser';
 
 const TwitterFeedItem = ({ tweet }) => {
     const status = parseStatus(tweet);
-    if (status.isRetweetStatus) {
-
-    }
     return (
         <li className="twitterfeeditem">
-            <img src={status.userPic} alt="Smiley face" className="twitteruserpic"/>
-            <div className="tweetcontainer">
-                <div className="twitteruserid">
-                    <a className="twitteruser" href={`https://www.twitter.com/${status.userName}`}>{status.user}</a>
-                    {(() => status.userVerified ? <img src="verified.png" className="userverified"/> : null)()}
-                    <span className="twitterusername">{status.userName}</span>
-                    <span className="tweettime">&nbsp;·&nbsp;{status.createdAt}</span>
-                </div>
-                <div className="tweettext">
-                    {ReactHtmlParser(status.text)}
-                </div>
-                {renderQuote(status)}
-                <div className="likesbar">
+            {renderRetweet(status)}
+            <div className="tweet">
+                <img src={status.userPic} alt="Smiley face" className="twitteruserpic" />
+                <div className="tweetcontainer">
+                    <div className="twitteruserid">
+                        <a className="twitteruser" href={`https://www.twitter.com/${status.userName}`}>{status.user}</a>
+                        {(() => status.userVerified ? <img src="verified.png" className="userverified" /> : null)()}
+                        <span className="twitterusername">{status.userName}</span>
+                        <span className="tweettime">&nbsp;·&nbsp;{status.createdAt}</span>
+                    </div>
+                    <div className="tweettext">
+                        {ReactHtmlParser(status.text)}
+                    </div>
+                    {renderQuote(status)}
+                    <div className="likesbar">
 
+                    </div>
                 </div>
             </div>
         </li>
@@ -33,11 +33,10 @@ const TwitterFeedItem = ({ tweet }) => {
 const parseStatus = (tweet) => {
     const status = {};
 
-    if (Boolean(tweet.retweeted_status)) {
+    if (tweet.retweeted_status) {
         status.retweeter = tweet.user.name;
         tweet = tweet.retweeted_status;
-    } 
-    
+    }
     status.createdAt = tweet.created_at;
     status.user = tweet.user.name;
     status.userName = `@${tweet.user.screen_name}`;
@@ -86,6 +85,17 @@ const addProfileLinks = (text) => {
 const renderQuote = (status) => {
     if (status.isQuoteStatus) {
         // render quote
+    }
+}
+
+const renderRetweet = (status) => {
+    if (status.retweeter) { // if status is a retweet status
+        return (
+            <div>
+                <img src="re.svg" className="retweet"></img>
+                <span className="retweetedby">{status.retweeter} retweeted</span>
+            </div>
+        )
     }
 }
 

@@ -44,8 +44,21 @@
     padding-right: 10px;
 }
 
-.twitterfeeditem {
+.tweet {
     display: flex;
+}
+
+.retweet {
+    position: relative;
+    top: 4px;
+    height: 18px;
+    width: 18px;
+    margin-left: 25px;
+}
+
+.retweetedby {
+    color: gray;
+    padding-left: 4px;
 }
 
 .twitteruserpic {
@@ -84,12 +97,16 @@
     top: 1px;
     height: 14px;
     width: 14px;
-    margin-right: 7px;
+    margin-left: 5px;
+}
+
+.twitterusername {
     margin-left: 5px;
 }
 
 .twitterhandle {
     color: #1DA1F2;
+    padding-left: 7px;
     text-decoration: none;
 }
 
