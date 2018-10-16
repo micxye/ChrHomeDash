@@ -8,7 +8,9 @@ const TwitterFeedItem = ({ tweet }) => {
         <li className="twitterfeeditem">
             {renderRetweet(status)}
             <div className="tweet">
-                <img src={status.userPic} alt="Smiley face" className="twitteruserpic" />
+                <div>
+                    <img src={status.userPic} alt="Smiley face" className="twitteruserpic" />
+                </div>
                 <div className="tweetcontainer">
                     <div className="twitteruserid">
                         <a className="twitteruser" href={`https://www.twitter.com/${status.userName}`}>{status.user}</a>
@@ -81,10 +83,21 @@ const addProfileLinks = (text) => {
     return text;
 }
 
-
 const renderQuote = (status) => {
     if (status.isQuoteStatus) {
         // render quote
+        return (
+            <div className="tweetquote">
+                <div className="twitteruserid">
+                    <span className="quoteduser">{status.quotedUser}</span>
+                    {(() => status.quotedUserVerified ? <img src="verified.png" className="userverified" /> : null)()}
+                    <span className="twitterusername">{status.quotedUserName}</span>
+                </div>
+                <div className="quotetext">
+                    {status.quotedText}
+                </div>
+            </div>
+        )
     }
 }
 

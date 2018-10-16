@@ -11,8 +11,8 @@ import TradingViewWidget, { Themes } from 'react-tradingview-widget';
 import FadeIn from 'react-fade-in';
 
 export default class App extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             loading: true,
             ip: "136.25.147.85", //ip.address(),
