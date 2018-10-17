@@ -23,13 +23,8 @@ export default class ToDoList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            toDos: []
+            toDos: [],
         };
-        this.moveToDo = this.moveToDo.bind(this);
-        this.findToDo = this.findToDo.bind(this);
-        this.completeToDo = this.completeToDo.bind(this);
-        this.removeToDo = this.removeToDo.bind(this);
-        this.addToDo = this.addToDo.bind(this);
     }
 
     componentDidMount() {
@@ -49,63 +44,68 @@ export default class ToDoList extends React.Component {
         }, 300);
     }
 
-    addToDo(text) {
-        const ID = () => '_' + Math.random().toString(36).substr(2, 9);
-        const toDo = {
-            id: ID(),
-            text: text,
-            complete: false,
-        };
-        const toDoList = this.state.toDos.slice();
+    addToDo = (text) => {
+        const ID = () => '_' + Math.random().toString(36).substr(2, 9),
+              toDo = {
+                id: ID(),
+                text: text,
+                complete: false,
+              },
+              toDoList = this.state.toDos.slice();
+
         toDoList.push(toDo);
-        this.setState({ toDos: toDoList });
-        this.saveToDoList();
+        this.setState({ toDos: toDoList }, this.saveToDoList);
     }
 
-    removeToDo(id) {
-        const targetIndex = this.findToDo(id).index;
-        const toDoList = this.state.toDos.slice();
+    removeToDo = (id) => {
+        const targetIndex = this.findToDo(id).index,
+              toDoList = this.state.toDos.slice();
+
         toDoList.splice(targetIndex, 1);
-        this.setState({ toDos: toDoList });
-        this.saveToDoList();
+        this.setState({ toDos: toDoList }, this.saveToDoList);
     }
 
-    completeToDo(id) {
-        const targetIndex = this.findToDo(id).index;
-        const toDoList = this.state.toDos.slice();
+    completeToDo = (id) => {
+        const targetIndex = this.findToDo(id).index,
+              toDoList = this.state.toDos.slice();
+
         toDoList[targetIndex].complete = !toDoList[targetIndex].complete;
-        this.setState({ toDos: toDoList });
-        this.saveToDoList();
+        this.setState({ toDos: toDoList }, this.saveToDoList);
     }
 
-    moveToDo(id, atIndex) {
+    moveToDo = (id, atIndex) => {
         const { toDo, index } = this.findToDo(id);
         this.setState(
             update(this.state, {
                 toDos: {
                     $splice: [[index, 1], [atIndex, 0, toDo]],
                 },
-            }),
+            }), this.saveToDoList
         );
-        this.saveToDoList();
     }
 
-    findToDo(id) {
-        const { toDos } = this.state;
-        const toDo = toDos.filter(c => c.id === id)[0];
+    findToDo = (id) => {
+        const { toDos } = this.state,
+              toDo = toDos.filter(c => c.id === id)[0];
+
         return {
             toDo,
             index: toDos.indexOf(toDo),
         }
     }
 
+    renderShiaGif = () => {
+        const { length } = this.state.toDos;
+        return <img src="shia.gif" alt="shia" className={(() => length < 3 ? "shia" : `shia gone`)()} />;
+    }
+
     render() {
-        const { connectDropTarget } = this.props;
-        const { toDos } = this.state;
+        const { connectDropTarget } = this.props,
+              { toDos } = this.state;
 
         return connectDropTarget(
             <div id="todolistcontainer">
-                <ToDoInput addToDo={this.addToDo} count={this.state.toDos.filter(toDo => !toDo.complete).length}/>
+                <ToDoInput addToDo={this.addToDo} count={toDos.filter(toDo => !toDo.complete).length}/>
                 <TransitionGroup component={ToDoListBoard}> 
                         {toDos.map(toDo => (
                             <FadeAndSlideTransition duration={300} key={toDo.id}>
@@ -124,7 +124,7 @@ export default class ToDoList extends React.Component {
                             </FadeAndSlideTransition>
                         ))}
                 </TransitionGroup>
-                <img src="shia.gif" alt="shia" className={(()=> this.state.toDos.length < 3 ? "shia" : "shia gone")()}></img>
+                {this.renderShiaGif()}
             </div>
         )
     }
