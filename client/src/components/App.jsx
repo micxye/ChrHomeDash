@@ -23,8 +23,6 @@ export default class App extends React.Component {
             showStories: [],
             userTimelines: {},
         }
-        this.displayApp = this.displayApp.bind(this);
-        this.changeWeather = this.changeWeather.bind(this);
     }
 
     componentDidMount() {
@@ -34,11 +32,6 @@ export default class App extends React.Component {
         this.getHNPosts('askstories');
         this.getHNPosts('showstories');
         this.getLocalWeather();
-    }
-
-    displayApp() {
-        this.setState({ loading: false });
-        this.initializeForecastDropdowns();
     }
 
     getLocalWeather() {
@@ -53,7 +46,12 @@ export default class App extends React.Component {
             });
     }
 
-    changeWeather(place) {
+    displayApp = () => {
+        this.setState({ loading: false });
+        this.initializeForecastDropdowns();
+    }
+
+    changeWeather = (place) => {
         this.setState({ weather: ""});
         axios.post(`http://localhost:8888/weather`, { place })
             .then(response => {
