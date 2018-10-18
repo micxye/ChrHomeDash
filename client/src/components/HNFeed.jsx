@@ -1,20 +1,14 @@
 import React from 'react';
-import axios from 'axios';
 import HNFeedItem from './HNFeedItem.jsx';
 import FadeIn from 'react-fade-in';
 
 export default class HNFeed extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            view: 'default',
-
-        }
-        this.changeView = this.changeView.bind(this);
-        this.renderView = this.renderView.bind(this);
+        this.state = { view: 'default' }
     }
 
-    changeView(view) {
+    changeView = (view) => {
         const { id } = view.target;
         if (id === 'hntop') this.setState({ view: 'topStories' });
         if (id === 'hnbest') this.setState({ view: 'bestStories' });
@@ -52,7 +46,7 @@ export default class HNFeed extends React.Component {
                             <HNFeedItem story={story} key={i} number={i + 1} ask={false} />
                         ));
             }
-        }
+        } 
     }
 
     render() {
@@ -77,6 +71,6 @@ export default class HNFeed extends React.Component {
                     {this.renderView()}
                 </ul>
             </div>
-        )
+        );
     }
 }
