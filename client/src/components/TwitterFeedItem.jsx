@@ -16,7 +16,7 @@ const TwitterFeedItem = ({ tweet }) => {
                         <a className="twitteruser" href={`https://www.twitter.com/${status.userName}`}>{status.user}</a>
                         {(() => status.userVerified ? <img src="verified.png" className="userverified" /> : null)()}
                         <span className="twitterusername">{status.userName}</span>
-                        <span className="tweettime">&nbsp;·&nbsp;{status.createdAt}</span>
+                        <span className="tweettime">&nbsp;·&nbsp;{moment(status.createdAt).format("MMM Do YY, h:mm:ss a")}</span>
                     </div>
                     <div className="tweettext">
                         {ReactHtmlParser(status.text)}

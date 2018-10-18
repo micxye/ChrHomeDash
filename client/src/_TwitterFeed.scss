@@ -23,6 +23,7 @@
     width: 560px;
     max-height: 384px;
     font-size: 14px;
+    border: 1px solid rgb(46, 46, 46);
 }
 
 #twit {
@@ -42,7 +43,8 @@
 }
 
 .twitterfeeditem {
-    border: 1px solid rgb(46, 46, 46);
+    border-bottom: 1px solid rgb(46, 46, 46);
+    border-right: 1px solid rgb(46, 46, 46);
     padding: 5px;
 }
 
