@@ -23,7 +23,14 @@ const TwitterFeedItem = ({ tweet }) => {
                     </div>
                     {renderQuote(status)}
                     <div className="likesbar">
-
+                        <div className="likescount">
+                            <img src="heart.svg" alt="♥" className="likesheart" />
+                            <span className="likesbarnum">{status.likes}</span>
+                        </div>
+                        <div className="retweetscount">
+                            <img src="re.svg" alt="\\" className="retweeticon" />
+                            <span className="likesbarnum">{status.retweets}</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -47,6 +54,8 @@ const parseStatus = (tweet) => {
     status.text = parseStatusText(tweet.full_text);
     status.link = `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`;
     status.isQuoteStatus = tweet.is_quote_status;
+    status.likes = tweet.favorite_count;
+    status.retweets = tweet.retweet_count;
     
     if (status.isQuoteStatus) {
         status.quotedText = tweet.quoted_status.full_text;

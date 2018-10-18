@@ -142,3 +142,35 @@
     text-decoration: none;
     color: white;
 }
+
+.likesbar {
+    padding-top: 5px;
+    display: flex;
+}
+
+.likescount {
+    width: 95px;
+    display: flex;
+}
+
+.retweetscount {
+    display: flex;
+}
+
+.likesheart {
+    position: relative;
+    top: 1px;
+    width: 15px;
+    height: 15px;
+}
+
+.retweeticon {
+    position: relative;
+    bottom: 1px;
+    width: 20px;
+    height: 20px;
+}
+
+.likesbarnum {
+    padding-left: 5px;
+}
