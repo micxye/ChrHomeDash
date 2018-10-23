@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { DragSource, DropTarget } from 'react-dnd'
-import ItemTypes from './ItemTypes.jsx'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { DragSource, DropTarget } from 'react-dnd';
+import ItemTypes from './ItemTypes.jsx';
 
 const toDoSource = {
     beginDrag(props) {
@@ -11,8 +11,8 @@ const toDoSource = {
         }
     },
     endDrag(props, monitor) {
-        const { id: droppedId, originalIndex } = monitor.getItem();
-        const didDrop = monitor.didDrop();
+        const { id: droppedId, originalIndex } = monitor.getItem(),
+              didDrop = monitor.didDrop();
 
         if (!didDrop) {
             props.moveToDo(droppedId, originalIndex)
@@ -25,8 +25,8 @@ const toDoTarget = {
         return false;
     },
     hover(props, monitor) {
-        const { id: draggedId } = monitor.getItem();
-        const { id: overId } = props;
+        const { id: draggedId } = monitor.getItem(),
+              { id: overId } = props;
 
         if (draggedId !== overId) {
             const { index: overIndex } = props.findToDo(overId);
