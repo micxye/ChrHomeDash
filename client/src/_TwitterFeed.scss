@@ -43,13 +43,19 @@
 }
 
 .twitterfeeditem {
-    border-bottom: 1px solid rgb(46, 46, 46);
+    border-top: 1px solid rgb(46, 46, 46);
     border-right: 1px solid rgb(46, 46, 46);
     padding: 5px;
 }
 
+.twitterfeeditem:hover {
+    cursor: pointer;
+    background-color: #282828;
+}
+
 .tweet {
     display: flex;
+    padding-top: 5px;
 }
 
 .retweet {
@@ -137,6 +143,10 @@
     flex-direction: column;
     padding: 5px;
     border-radius: 5px;
+}
+
+.tweetquote:hover {
+    border: 1px solid rgb(70, 70, 70);
 }
 
 .quoteduser {

@@ -5,7 +5,7 @@ import ReactHtmlParser from 'react-html-parser';
 const TwitterFeedItem = ({ tweet }) => {
     const status = parseStatus(tweet);
     return (
-        <li className="twitterfeeditem">
+        <li className="twitterfeeditem" onClick={() => goToLink(status.link)}>
             {renderRetweet(status)}
             <div className="tweet">
                 <div>
@@ -13,7 +13,7 @@ const TwitterFeedItem = ({ tweet }) => {
                 </div>
                 <div className="tweetcontainer">
                     <div className="twitteruserid">
-                        <a className="twitteruser" href={`https://www.twitter.com/${status.userName}`}>{status.user}</a>
+                        <span className="twitteruser" onClick={() => goToLink(`https://www.twitter.com/${status.userName}`)}>{status.user}</span>
                         {(() => status.userVerified ? <img src="verified.png" className="userverified" /> : null)()}
                         <span className="twitterusername">{status.userName}</span>
                         <span className="tweettime">&nbsp;·&nbsp;{moment(status.createdAt).format("MMM Do YY, h:mm:ss a")}</span>
@@ -96,7 +96,7 @@ const renderQuote = (status) => {
     if (status.isQuoteStatus) {
         // render quote
         return (
-            <div className="tweetquote">
+            <div className="tweetquote" onClick={() => goToLink(status.quotedLink)}>
                 <div className="twitteruserid">
                     <span className="quoteduser">{status.quotedUser}</span>
                     {(() => status.quotedUserVerified ? <img src="verified.png" className="userverified" /> : null)()}
@@ -119,6 +119,10 @@ const renderRetweet = (status) => {
             </div>
         )
     }
+}
+
+const goToLink = (link) => {
+    window.open(link);
 }
 
 export default TwitterFeedItem;
