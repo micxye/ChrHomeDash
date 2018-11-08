@@ -31,13 +31,13 @@ export default class TwitterFeed extends React.Component {
         if (twitterFeed.length !== 0) {
             console.log(twitterFeed)
             return (
-                <FadeIn>
-                    {twitterFeed.map((tweet, i) => (
+                // <FadeIn> {
+                    twitterFeed.map((tweet, i) => (
                         <TweetErrorBoundary key={i}>
                             <TwitterFeedItem tweet={tweet} key={i} />
                         </TweetErrorBoundary>
-                    ))}
-                </FadeIn>
+                    ))
+                // } </FadeIn>
             );
         } 
     }

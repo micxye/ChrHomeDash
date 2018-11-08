@@ -5,6 +5,8 @@ const bodyParser = require('body-parser');
 const axios = require('axios');
 const Twit = require('twit');
 
+const db = require('../database/index.js');
+
 require('dotenv').load();
 
 app.use(cors());
@@ -75,8 +77,8 @@ const T = new Twit({
     strictSSL: true,     // optional - requires SSL certificates to be valid.
 });
 
-// let following = ['realdonaldtrump', 'kingjames','rotoworld_bk', 'rotoworld_fb', 'shamscharania', 'kanyewest', 'dropsbyjay', 'solelinks'];
-let following = ['michaelyeaah']
+let following = ['realdonaldtrump', 'kingjames','rotoworld_bk', 'rotoworld_fb', 'shamscharania', 'kanyewest', 'dropsbyjay', 'solelinks'];
+// let following = ['michaelyeaah']
 
 let twitterUserTimelines = {};
 

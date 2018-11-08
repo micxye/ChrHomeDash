@@ -36,7 +36,6 @@ const TwitterFeedItem = ({ tweet }) => {
             </div>
         </li>
     );
-    
 }
 
 const parseStatus = (tweet) => {
