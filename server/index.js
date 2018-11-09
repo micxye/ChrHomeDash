@@ -107,4 +107,10 @@ app.get('/tweets', (req, res) => {
     res.send(twitterUserTimelines);
 });
 
+// call this on initial server load
+db.getSettings((err, setting) => {
+    const settings = JSON.stringify(setting);
+    console.log(settings)
+})
+
 app.listen(port, () => console.log(`Server is listening on port ${port}`));

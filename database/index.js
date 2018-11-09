@@ -10,3 +10,29 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', () => {
     console.log('connected to mongo!!!');
 });
+
+const userSchema = new mongoose.Schema({
+    name: String,
+    tasks: [{ id: String, text: String, complete: Boolean }],
+    following: [String],
+    follwingSize: Number,
+})
+
+const Setting = mongoose.model('Setting', userSchema, 'mic');
+
+const getSettings = callback => {
+    Setting.find({ name: 'mic' }).exec(callback);
+}
+
+const saveList = (list, callback) => {
+    // 
+}
+
+const saveFollowing = (following, callback) => {
+    // save following list and update following size
+}
+
+
+module.exports = {
+    db, getSettings
+}
