@@ -17,20 +17,65 @@ const port = 8888;
 
 app.use(express.static(path.join(__dirname, '/../client/dist')));
 
-let toDoList = [{
-    id: 1,
-    text: 'server has been reset!',
-    complete: false
-}];
+let tasks = [];
+let following = [];
+
+(() => { // get user settings from db
+    db.getSettings((err, data) => {
+        tasks = data[0].tasks;
+        following = data[0].following;
+        getTweets();
+        setInterval(getTweets, 60000);
+    });
+})();
 
 app.get('/todolist', (req, res) => {
-    res.send(toDoList);
+    res.send(settings.tasks);
 });
 
 app.post('/todolist', (req, res) => {
-    toDoList = req.body;
-    res.send('list updated in server')
-    console.log(toDoList)
+    settings.tasks = req.body;
+    db.saveTasks(req.body, () => {
+        res.send('list updated in server');
+        console.log(settings.tasks);
+    });
+});
+
+const T = new Twit({
+    consumer_key: `${process.env.T_CONSUMER_KEY}`,
+    consumer_secret: `${process.env.T_CONSUMER_SECRET}`,
+    access_token: `${process.env.T_ACCESS_TOKEN}`,
+    access_token_secret: `${process.env.T_ACCESS_TOKEN_SECRET}`,
+    timeout_ms: 60 * 1000,  // optional HTTP request timeout to apply to all requests.
+    strictSSL: true,     // optional - requires SSL certificates to be valid.
+});
+
+// let following = ['realdonaldtrump', 'kingjames', 'rotoworld_bk', 'rotoworld_fb', 'shamscharania', 'kanyewest', 'dropsbyjay', 'solelinks'];
+// let following = ['michaelyeaah']
+
+let twitterUserTimelines = {};
+
+function getTweets() {
+    for (let i = 0; i < following.length; i++) {
+        if (!twitterUserTimelines[following[i]]) {
+            twitterUserTimelines[following[i]] = [];
+        }
+        T.get('statuses/user_timeline', { screen_name: following[i], tweet_mode: 'extended', count: 20 },
+            function (err, data, response) {
+                if (err) console.log(err);
+                if (Array.isArray(data)) {
+                    let tweets = data.map(tweet => {
+                        tweet.created_at = Date.parse(tweet.created_at);
+                        return tweet;
+                    });
+                    twitterUserTimelines[following[i]] = tweets;
+                }
+            });
+    }
+}
+
+app.get('/tweets', (req, res) => {
+    res.send(twitterUserTimelines);
 });
 
 app.post('/localweather', (req, res) => {
@@ -67,50 +112,5 @@ app.post('/weather', (req, res) => {
             res.send(error);
         });
 });
-
-const T = new Twit({
-    consumer_key: `${process.env.T_CONSUMER_KEY}`,
-    consumer_secret: `${process.env.T_CONSUMER_SECRET}`,
-    access_token: `${process.env.T_ACCESS_TOKEN}`,
-    access_token_secret: `${process.env.T_ACCESS_TOKEN_SECRET}`,
-    timeout_ms: 60 * 1000,  // optional HTTP request timeout to apply to all requests.
-    strictSSL: true,     // optional - requires SSL certificates to be valid.
-});
-
-let following = ['realdonaldtrump', 'kingjames','rotoworld_bk', 'rotoworld_fb', 'shamscharania', 'kanyewest', 'dropsbyjay', 'solelinks'];
-// let following = ['michaelyeaah']
-
-let twitterUserTimelines = {};
-
-function getTweets() {
-    for (let i = 0; i < following.length; i++) {
-        if (!twitterUserTimelines[following[i]]) {
-            twitterUserTimelines[following[i]] = [];
-        }
-        T.get('statuses/user_timeline', { screen_name: following[i], tweet_mode: 'extended', count: 20 }, 
-          function (err, data, response) {
-            if (err) console.log(err);
-            if (Array.isArray(data)) {
-                let tweets = data.map(tweet => {
-                    tweet.created_at = Date.parse(tweet.created_at);
-                    return tweet;
-                });
-                twitterUserTimelines[following[i]] = tweets;
-            }
-        });
-    }
-}
-getTweets();
-setInterval(getTweets, 60000);
-
-app.get('/tweets', (req, res) => {
-    res.send(twitterUserTimelines);
-});
-
-// call this on initial server load
-db.getSettings((err, setting) => {
-    const settings = JSON.stringify(setting);
-    console.log(settings)
-})
 
 app.listen(port, () => console.log(`Server is listening on port ${port}`));

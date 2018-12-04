@@ -14,25 +14,15 @@ db.once('open', () => {
 const userSchema = new mongoose.Schema({
     name: String,
     tasks: [{ id: String, text: String, complete: Boolean }],
-    following: [String],
-    follwingSize: Number,
-})
+    following: [String]
+});
 
 const Setting = mongoose.model('Setting', userSchema, 'mic');
 
-const getSettings = callback => {
-    Setting.find({ name: 'mic' }).exec(callback);
-}
+const getSettings = callback => Setting.find({ name: 'mic' }).exec(callback);
 
-const saveList = (list, callback) => {
-    // 
-}
+const saveTasks = (tasks, callback) => Setting.findOneAndUpdate({ name: 'mic' }, { tasks }, callback);
 
-const saveFollowing = (following, callback) => {
-    // save following list and update following size
-}
+const saveFollowing = (following, callback) => Setting.findOneAndUpdate({ name: 'mic' }, { following }, callback);
 
-
-module.exports = {
-    db, getSettings
-}
+module.exports = { db, getSettings, saveTasks, saveFollowing }
