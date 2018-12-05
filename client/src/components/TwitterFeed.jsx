@@ -7,37 +7,21 @@ export default class TwitterFeed extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            twitterFeed: [],
-            view: 'feed',
         }
-    }
-
-    componentDidMount() {
-        this.createFeed();
-    }
-
-    createFeed() {
-        let twitterFeed = [];
-        const { userTimelines } = this.props;
-        for (let user in userTimelines) {
-            twitterFeed = twitterFeed.concat(userTimelines[user]);
-        }
-        twitterFeed.sort((a, b) => b.created_at - a.created_at);
-        this.setState({ twitterFeed });
     }
 
     renderTweets() {
-        const { twitterFeed } = this.state;
+        const { twitterFeed } = this.props;
         if (twitterFeed.length !== 0) {
             console.log(twitterFeed)
             return (
-                // <FadeIn> {
+                <FadeIn> {
                     twitterFeed.map((tweet, i) => (
                         <TweetErrorBoundary key={i}>
                             <TwitterFeedItem tweet={tweet} key={i} />
                         </TweetErrorBoundary>
                     ))
-                // } </FadeIn>
+                } </FadeIn>
             );
         } 
     }

@@ -21,12 +21,13 @@ export default class App extends React.Component {
             bestStories: [],
             askStories: [],
             showStories: [],
-            userTimelines: {},
+            twitterFeed: [],
+            twitterPage: 0,
         }
     }
 
     componentDidMount() {
-        this.getTwitterTimelines();
+        this.getTweets();
         this.getHNPosts('topstories');
         this.getHNPosts('beststories');
         this.getHNPosts('askstories');
@@ -115,10 +116,10 @@ export default class App extends React.Component {
             .catch(error => console.log(error));
     }
 
-    getTwitterTimelines() {
-        axios.get('http://localhost:8888/tweets')
+    getTweets() {
+        axios.post('http://localhost:8888/tweets', { page: this.state.twitterPage })
             .then(response => {
-                this.setState({ userTimelines: response.data })
+                this.setState({ twitterFeed: this.state.twitterFeed.concat(response.data), twitterPage: this.state.twitterPage + 1 });
             })
             .catch(error => console.log(error));
     }
@@ -156,7 +157,7 @@ export default class App extends React.Component {
                             </div>
                             <div id="feedscontainer">
                                 <HNFeed topStories={this.state.topStories} bestStories={this.state.bestStories} askStories={this.state.askStories} showStories={this.state.showStories}/>
-                                <TwitterFeed userTimelines={this.state.userTimelines}/>
+                                <TwitterFeed twitterFeed={this.state.twitterFeed}/>
                             </div>
                         </div>
                     </div>

@@ -1,45 +1,33 @@
+const path = require('path');
 const express = require('express');
-const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const Twit = require('twit');
-
-const db = require('../database/index.js');
-
 require('dotenv').load();
 
+const db = require('../database/index.js');
+const app = express();
+const port = 8888;
 app.use(cors());
 app.use(bodyParser.json());
-
-const path = require('path');
-const port = 8888;
-
 app.use(express.static(path.join(__dirname, '/../client/dist')));
 
+// let following = ['realdonaldtrump', 'kingjames', 'rotoworld_bk', 'rotoworld_fb', 'shamscharania', 'kanyewest', 'dropsbyjay', 'solelinks'];
 let tasks = [];
 let following = [];
+let twitterUserTimelines = {};
+let twitterFeed = [];
 
 (() => { // get user settings from db
     db.getSettings((err, data) => {
+        console.log(data[0]);
         tasks = data[0].tasks;
         following = data[0].following;
         getTweets();
         setInterval(getTweets, 60000);
     });
 })();
-
-app.get('/todolist', (req, res) => {
-    res.send(settings.tasks);
-});
-
-app.post('/todolist', (req, res) => {
-    settings.tasks = req.body;
-    db.saveTasks(req.body, () => {
-        res.send('list updated in server');
-        console.log(settings.tasks);
-    });
-});
 
 const T = new Twit({
     consumer_key: `${process.env.T_CONSUMER_KEY}`,
@@ -49,11 +37,6 @@ const T = new Twit({
     timeout_ms: 60 * 1000,  // optional HTTP request timeout to apply to all requests.
     strictSSL: true,     // optional - requires SSL certificates to be valid.
 });
-
-// let following = ['realdonaldtrump', 'kingjames', 'rotoworld_bk', 'rotoworld_fb', 'shamscharania', 'kanyewest', 'dropsbyjay', 'solelinks'];
-// let following = ['michaelyeaah']
-
-let twitterUserTimelines = {};
 
 function getTweets() {
     for (let i = 0; i < following.length; i++) {
@@ -70,12 +53,36 @@ function getTweets() {
                     });
                     twitterUserTimelines[following[i]] = tweets;
                 }
+                if (i === following.length - 1) {
+                    createFeed();
+                }
             });
     }
 }
 
-app.get('/tweets', (req, res) => {
-    res.send(twitterUserTimelines);
+function createFeed() {
+    for (let user in twitterUserTimelines) {
+        twitterFeed = twitterFeed.concat(twitterUserTimelines[user]);
+    }
+    twitterFeed.sort((a, b) => b.created_at - a.created_at);
+    console.log(twitterFeed)
+}
+
+app.post('/tweets', (req, res) => {
+    const { page } = req.body;
+    res.send(twitterFeed.slice(page * 10, page * 10 + 10));
+});
+
+app.get('/todolist', (req, res) => {
+    res.send(tasks);
+});
+
+app.post('/todolist', (req, res) => {
+    tasks = req.body;
+    db.saveTasks(req.body, () => {
+        res.send('list updated in server');
+        console.log(tasks);
+    });
 });
 
 app.post('/localweather', (req, res) => {
