@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/micxye/chromeNewTabDash.git"
+    "url": "git+https://github.com/micxye/chromehomedash.git"
   },
   "author": "mic",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/micxye/chromeNewTabDash/issues"
+    "url": "https://github.com/micxye/chromehomedash/issues"
   },
-  "homepage": "https://github.com/micxye/chromeNewTabDash#readme",
+  "homepage": "https://github.com/micxye/chromehomedash#readme",
   "dependencies": {
     "axios": "^0.18.0",
     "cors": "^2.8.4",
@@ -39,6 +39,7 @@
     "react-dom": "^16.3.2",
     "react-fade-in": "^0.1.6",
     "react-html-parser": "^2.0.2",
+    "react-reveal": "^1.2.2",
     "react-textfit": "^1.1.0",
     "react-tradingview-widget": "^1.2.5",
     "react-transition-group": "^2.4.0",

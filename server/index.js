@@ -13,9 +13,9 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '/../client/dist')));
 
-// let following = ['realdonaldtrump', 'kingjames', 'rotoworld_bk', 'rotoworld_fb', 'shamscharania', 'kanyewest', 'dropsbyjay', 'solelinks'];
+let following = ['realdonaldtrump', 'kingjames', 'rotoworld_bk', 'rotoworld_fb', 'shamscharania', 'kanyewest', 'dropsbyjay', 'solelinks'];
 let tasks = [];
-let following = [];
+// let following = [];
 let twitterUserTimelines = {};
 let twitterFeed = [];
 
@@ -23,7 +23,7 @@ let twitterFeed = [];
     db.getSettings((err, data) => {
         console.log(data[0]);
         tasks = data[0].tasks;
-        following = data[0].following;
+        // following = data[0].following;
         getTweets();
         setInterval(getTweets, 60000);
     });
@@ -61,16 +61,19 @@ function getTweets() {
 }
 
 function createFeed() {
+    let newFeed = [];
     for (let user in twitterUserTimelines) {
-        twitterFeed = twitterFeed.concat(twitterUserTimelines[user]);
+        newFeed = newFeed.concat(twitterUserTimelines[user]);
     }
-    twitterFeed.sort((a, b) => b.created_at - a.created_at);
-    console.log(twitterFeed)
+    newFeed.sort((a, b) => b.created_at - a.created_at);
+    twitterFeed = newFeed;
 }
 
 app.post('/tweets', (req, res) => {
     const { page } = req.body;
-    res.send(twitterFeed.slice(page * 10, page * 10 + 10));
+    if (page * 10 + 10 <= twitterFeed.length) {
+        res.send(twitterFeed.slice(page * 10, page * 10 + 10));
+    }
 });
 
 app.get('/todolist', (req, res) => {

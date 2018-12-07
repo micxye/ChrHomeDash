@@ -8,7 +8,7 @@ import TwitterFeed from './TwitterFeed.jsx';
 import HNFeed from './HNFeed.jsx';
 import InspiringQuote from './InspiringQuote.jsx';
 import TradingViewWidget, { Themes } from 'react-tradingview-widget';
-import FadeIn from 'react-fade-in';
+import Fade from 'react-reveal/Fade';
 
 export default class App extends React.Component {
     constructor() {
@@ -22,7 +22,7 @@ export default class App extends React.Component {
             askStories: [],
             showStories: [],
             twitterFeed: [],
-            twitterPage: 0,
+            twitterPage: 0
         }
     }
 
@@ -33,6 +33,15 @@ export default class App extends React.Component {
         this.getHNPosts('askstories');
         this.getHNPosts('showstories');
         this.getLocalWeather();
+    }
+
+    getTweets = () => {
+        const { twitterFeed, twitterPage } = this.state;
+        axios.post('http://localhost:8888/tweets', { page: this.state.twitterPage })
+            .then(response => {
+                this.setState({ twitterFeed: twitterFeed.concat(response.data), twitterPage: twitterPage + 1, twitterLoading: false });
+            })
+            .catch(error => console.log(error));
     }
 
     getLocalWeather() {
@@ -116,17 +125,9 @@ export default class App extends React.Component {
             .catch(error => console.log(error));
     }
 
-    getTweets() {
-        axios.post('http://localhost:8888/tweets', { page: this.state.twitterPage })
-            .then(response => {
-                this.setState({ twitterFeed: this.state.twitterFeed.concat(response.data), twitterPage: this.state.twitterPage + 1 });
-            })
-            .catch(error => console.log(error));
-    }
-
     render() {
         return this.state.loading ? <div id="apploading"></div> :
-            <FadeIn>
+            <Fade left>
                 <div id="appcontainer">
                     <div id="leftsidecontainer">
                         <ToDoList />
@@ -157,11 +158,11 @@ export default class App extends React.Component {
                             </div>
                             <div id="feedscontainer">
                                 <HNFeed topStories={this.state.topStories} bestStories={this.state.bestStories} askStories={this.state.askStories} showStories={this.state.showStories}/>
-                                <TwitterFeed twitterFeed={this.state.twitterFeed}/>
+                                <TwitterFeed twitterFeed={this.state.twitterFeed} page={this.state.twitterPage} getTweets={this.getTweets}/>
                             </div>
                         </div>
                     </div>
                 </div>
-            </FadeIn>
+            </Fade>
     }
 }

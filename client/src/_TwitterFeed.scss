@@ -35,9 +35,19 @@
     border: solid white 1px;
 }
 
+#twitterloading {
+    font-size: 20px;
+    display: none;
+}
+
+#twitterloading.show{
+    display: block;
+}
+
 #twitter {
     position: relative;
     bottom: 3px;
+    font-weight: 550;
     padding-left: 5px;
     padding-right: 10px;
 }
