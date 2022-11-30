@@ -1,6 +1,6 @@
-# Chrome Home Dash
+# ChrHomeDash
 
-### Work in progress! Check out the demo gifs below
+### WIP
 
 ##### Dashboard
 ![](dashboard-demo.gif)
